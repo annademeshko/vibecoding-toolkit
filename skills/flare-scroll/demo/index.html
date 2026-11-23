@@ -1,93 +1,158 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#e9e9e6">
-  <meta name="description" content="Flare Scroll — a customizable, scroll-driven light wave. Explore palettes, adjust the crest, and copy the configuration.">
-  <title>Flare Scroll — Interactive Motion Playground</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <style>
-    :root{font-family:"DM Sans",Arial,Helvetica,sans-serif;color:#171717;background:#e9e9e6;font-synthesis:none;-webkit-font-smoothing:antialiased}
-    *{box-sizing:border-box}html{scroll-behavior:auto}body{margin:0;overflow-x:hidden}button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
-    :focus-visible{outline:2px solid #4067cc;outline-offset:4px}
-    .topbar{height:78px;padding:0 clamp(20px,3vw,50px);display:flex;align-items:center;justify-content:space-between;gap:24px;border-bottom:1px solid #cececa}
-    .identity{display:flex;align-items:center;gap:15px;font-weight:750;font-size:14px;letter-spacing:-.05em}.mark{width:27px;height:27px;border-radius:50%;border:5px solid #1c1c1b;display:block;position:relative}.mark:after{content:"";position:absolute;width:4px;height:4px;background:#1c1c1b;top:50%;left:50%;border-radius:50%;transform:translate(-50%,-50%)}
-    .topbar-note{font-size:12px;color:#666762}.topbar-right{display:flex;align-items:center;gap:21px}.topbar-right a{font-size:12px;border-bottom:1px solid currentColor;padding-bottom:2px}
-    .intro{padding:42px clamp(20px,3vw,50px) 26px;display:flex;align-items:end;justify-content:space-between;gap:24px}
-    .intro h1{font-size:clamp(42px,5.3vw,84px);line-height:.99;font-weight:500;letter-spacing:-.075em;margin:0}.intro .descriptor{max-width:230px;font-size:13px;color:#62645f;line-height:1.55;margin-bottom:3px}
-    .overline{color:#62645f;font-size:10px;text-transform:uppercase;letter-spacing:.16em;font-weight:700;margin-bottom:14px}
-    .demo-track{height:490svh;position:relative;padding:0 14px}.demo-shell{height:calc(100svh - 29px);position:sticky;top:14px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:12px}
-    .scene{min-width:0;position:relative;overflow:hidden;isolation:isolate;border-radius:13px;background:#000;box-shadow:0 0 0 1px rgba(0,0,0,.1)}
-    .scene canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-    .scene-copy{position:absolute;z-index:2;top:50%;left:50%;width:min(90%,720px);text-align:center;transform:translate3d(-50%,-50%,0);opacity:0;pointer-events:none;will-change:opacity,transform,filter}
-    .scene-copy.light{color:#fff}.scene-copy.dark{color:#0a0a0a}.scene-eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.18em;font-weight:700;margin:0 0 18px}
-    .scene-copy h2{font-size:clamp(40px,5.1vw,88px);line-height:1.025;letter-spacing:-.073em;font-weight:500;margin:0}.scene-copy p:last-child{font-size:clamp(12px,1.1vw,15px);opacity:.75;letter-spacing:-.012em;line-height:1.6;margin:22px auto 0;max-width:350px}
-    .scene-footer{position:absolute;z-index:4;bottom:30px;left:35px;right:35px;display:flex;justify-content:flex-end;color:var(--ink,#fff);gap:20px;font-size:10px;text-transform:uppercase;letter-spacing:.13em}.scene-footer span{opacity:.65}
-    .intro h1 em,.scene-copy h2 em,.docs h2 em{font-family:"Instrument Serif", "Iowan Old Style", "Baskerville", Georgia,serif;font-weight:400;font-style:italic;letter-spacing:-.04em}
-    .intro h1 em{font-size:1.07em}.scene-copy h2 em{font-size:1.13em}
-    .panel{background:#f7f7f5;border:1px solid #d6d6d2;border-radius:13px;display:flex;flex-direction:column;overflow:hidden}
-    .panel-top{padding:28px 26px 22px;border-bottom:1px solid #dfdfdb;display:flex;justify-content:space-between;align-items:start;gap:12px}
-    .panel-top h2{margin:0;font-size:21px;line-height:1.15;font-weight:500;letter-spacing:-.055em}.micro{font-size:10px;color:#777875;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
-    .panel-body{padding:22px 26px;overflow:auto;flex:1;scrollbar-width:thin}.field{margin-bottom:27px}.field-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px}
-    .field-title label,.field-title span{font-size:12px;font-weight:650;letter-spacing:-.02em}.field-title output{font-size:11px;font-variant-numeric:tabular-nums;color:#666}
-    .preset-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.preset{border:1px solid #d9d9d5;background:#fff;border-radius:8px;padding:10px 6px 9px;text-align:center;min-height:69px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;font-size:10px;color:#5d5e5a;transition:border-color .15s}
-    .preset:hover{border-color:#9a9a96}.preset[aria-pressed=true]{border-color:#222;box-shadow:inset 0 0 0 1px #222;color:#151515}.swatch{width:19px;height:19px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.13)}
-    .color-row{display:grid;grid-template-columns:1fr auto;align-items:center;padding:10px 0;border-bottom:1px solid #e7e7e3;gap:12px}.color-row label{font-size:12px}.color-item{display:flex;align-items:center;gap:9px}.hex-text{font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#686864}.color-input{appearance:none;padding:0;border:1px solid #d3d3cf;width:29px;height:29px;border-radius:6px;overflow:hidden;background:none;cursor:pointer}.color-input::-webkit-color-swatch-wrapper{padding:0}.color-input::-webkit-color-swatch{border:0;border-radius:4px}.color-input::-moz-color-swatch{border:0}
-    .range{appearance:none;width:100%;height:3px;background:#d5d5d2;outline:none;border-radius:0;cursor:pointer;accent-color:#252525}.range::-webkit-slider-thumb{appearance:none;width:13px;height:13px;background:#171717;border-radius:50%;border:3px solid #f7f7f5;box-shadow:0 0 0 1px #171717}.range::-moz-range-thumb{width:10px;height:10px;background:#171717;border-radius:50%;border:2px solid #f7f7f5}
-    .field-hint{font-size:11px;color:#858681;line-height:1.55;margin-top:11px}
-    .panel-bottom{padding:18px 26px 25px;border-top:1px solid #dfdfdb;background:#f4f4f1}.btn-row{display:grid;grid-template-columns:1fr auto;gap:8px}.primary,.secondary,.toggle-panel{min-height:43px;border-radius:8px;font-size:12px;font-weight:650}.primary{border:1px solid #171717;background:#171717;color:#fff}.primary:hover{background:#303030}.secondary{border:1px solid #cececa;background:transparent;color:#171717;padding:0 16px}.secondary:hover{background:#e9e9e5}
-    #close-panel{display:none}.panel-footnote{font-size:10px;line-height:1.5;color:#7a7b76;margin:14px 0 0}.toggle-panel{display:none}
-    .track-anchor{position:absolute;left:0;height:1px;width:1px;pointer-events:none}.track-anchor.one{top:0}.track-anchor.two{top:43%}.track-anchor.three{top:84%}
-    .docs{max-width:1200px;margin:0 auto;padding:130px 30px 150px}.docs-head{border-top:1px solid #bcbcb8;padding-top:25px;display:flex;justify-content:space-between;gap:30px}.docs h2{margin:0;font-size:clamp(32px,4vw,60px);line-height:1.04;letter-spacing:-.07em;font-weight:500;max-width:650px}.docs-body{display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-top:65px}.docs-body p{font-size:13px;line-height:1.75;color:#555752;max-width:420px}.docs-body h3{font-size:12px;letter-spacing:-.02em}.code-box{background:#191919;color:#e9e9e8;border-radius:10px;padding:22px;font-size:12px;overflow:auto;line-height:1.8;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre}.code-box .c{color:#90918e}.code-box .k{color:#b2c6ed}.bottom-line{border-top:1px solid #c8c8c2;padding-top:22px;margin-top:95px;display:flex;justify-content:space-between;gap:20px;font-size:11px;color:#777}
-    @media(max-width:990px){.demo-shell{grid-template-columns:minmax(0,1fr) 290px}.scene-footer{left:24px;right:24px}.intro .descriptor{max-width:190px}.panel-top,.panel-body,.panel-bottom{padding-left:18px;padding-right:18px}}
-    @media(max-width:760px){.topbar{height:64px;padding:0 18px}.topbar-note{display:none}.intro{padding:31px 18px 25px}.intro h1{font-size:clamp(40px,9vw,60px)}.intro .descriptor{display:none}.demo-track{padding:0 8px}.demo-shell{grid-template-columns:1fr;height:calc(100svh - 16px);top:8px}.scene{border-radius:11px}.scene-footer{bottom:25px;left:22px;right:22px}.scene-copy h2{font-size:clamp(38px,8.6vw,65px)}.panel{position:absolute;z-index:10;right:10px;left:10px;bottom:10px;top:auto;max-height:calc(100% - 30px);transform:translateY(calc(100% + 16px));transition:transform .24s ease;box-shadow:0 16px 50px rgba(0,0,0,.28)}.panel.open{transform:translateY(0)}.panel-body{max-height:55svh}.toggle-panel{display:block;position:absolute;z-index:9;bottom:18px;left:50%;transform:translateX(-50%);padding:0 19px;color:#191919;background:#f7f7f5;border:1px solid #bbbdb9;box-shadow:0 4px 20px rgba(0,0,0,.16)}.toggle-panel[aria-expanded=true]{visibility:hidden}#close-panel{display:block}.panel-top{padding-top:20px}.docs{padding:90px 20px}.docs-body{grid-template-columns:1fr;gap:26px;margin-top:35px}.docs-head{display:block}.docs h2{margin-top:20px}}
-    @media(max-width:380px){.scene-copy h2{font-size:36px}.scene-copy h2 em{font-size:1.08em}.scene-copy{width:94%}.scene-eyebrow{font-size:9px}}
-    @media(prefers-reduced-motion:reduce){.panel{transition:none}.preset{transition:none}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#121212">
+<meta name="description" content="Flare Scroll: a scroll-driven light wave with editable color, softness and shape.">
+<title>Flare Scroll — Component Study</title>
+<style>
+
+:root{font-family:Arial,Helvetica,-apple-system,BlinkMacSystemFont,sans-serif;color:#f3f3f0;background:#121212;font-synthesis:none;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}html{scroll-behavior:auto}body{margin:0;background:#121212;color:#f3f3f0;overflow-x:hidden}
+body{--canvas:#121212;--text:#f3f3f0;--muted:#939392;--rule:#353535;--panel:#171717;--surface:#1d1d1d}
+button,input{font:inherit}button{cursor:pointer;color:inherit}a{color:inherit}
+:is(button,input,a):focus-visible{outline:2px solid #f3f3f0;outline-offset:4px}
+.page{width:min(100% - 96px,1116px);margin:0 auto}
+.intro{padding:85px 0 64px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;align-items:end}
+.overline{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.intro h1{margin:21px 0 0;font-size:clamp(55px,7vw,90px);line-height:1.02;font-weight:500;letter-spacing:-.078em}
+.descriptor{color:var(--muted);margin:0 0 5px;max-width:290px;font-size:15px;line-height:1.62}
+.preview-toolbar{height:71px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;gap:22px}
+.preview-toolbar strong{font-size:12px;font-weight:600;letter-spacing:-.01em}
+.toolbar-side{display:flex;align-items:center;gap:27px;font-size:11px;color:var(--muted)}
+.toolbar-side a{text-underline-offset:4px;text-decoration-color:var(--rule)}
+.toolbar-side a:hover{color:var(--text)}
+.toolbar-side .tiny-separator{height:12px;border-left:1px solid var(--rule)}
+.demo-track{height:455svh;position:relative;min-height:2400px}
+.track-anchor{position:absolute;width:1px;height:1px;left:0;pointer-events:none}
+.track-anchor.one{top:0}.track-anchor.two{top:43%}.track-anchor.three{top:84%}
+.demo-shell{height:min(79svh,735px);min-height:490px;position:sticky;top:clamp(10px,5svh,54px);display:grid;grid-template-columns:minmax(0,1fr) 274px;border-bottom:1px solid var(--rule)}
+.scene{position:relative;min-width:0;overflow:hidden;isolation:isolate;background:#000;border-right:1px solid var(--rule)}
+.scene canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.scene-copy{position:absolute;left:50%;top:50%;z-index:2;width:min(90%,700px);opacity:0;text-align:center;transform:translate3d(-50%,-50%,0);will-change:opacity,transform,filter;pointer-events:none}
+.scene-copy.light{color:#fff}.scene-copy.dark{color:#0c0c0c}
+.scene-eyebrow{font-size:11px;letter-spacing:.10em;text-transform:uppercase;margin:0 0 20px;font-weight:500}
+.scene-copy h2{font-size:clamp(40px,5.1vw,76px);font-weight:500;line-height:1.05;letter-spacing:-.067em;margin:0}
+.scene-copy h2 em{font-style:normal;font-weight:500}
+.scene-copy p:last-child{font-size:13px;line-height:1.65;max-width:360px;margin:20px auto 0;opacity:.78}
+.scene-footer{position:absolute;z-index:4;bottom:25px;left:27px;right:27px;display:flex;justify-content:flex-end;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink,#fff)}
+.scene-footer span{opacity:.75}
+.panel{min-width:0;background:var(--canvas);display:flex;flex-direction:column;overflow:hidden}
+.panel-top{padding:26px 24px 23px;border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.panel-top h2{font-size:13px;font-weight:600;letter-spacing:-.015em;margin:0}
+.micro{font-size:10px;color:var(--muted);letter-spacing:.05em;text-transform:none;font-weight:400}
+.panel-body{overflow-y:auto;scrollbar-width:thin;flex:1;padding:25px 24px 0}
+.field{margin:0 0 30px}
+.field-title{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:17px}
+.field-title label,.field-title span:first-child{font-size:12px;font-weight:600;letter-spacing:-.01em}
+.field-title output{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.preset-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));row-gap:9px;column-gap:11px}
+.preset{border:0;border-bottom:1px solid transparent;background:transparent;padding:6px 0 9px;min-width:0;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:10px;color:var(--muted);transition:color .15s,border-color .15s}
+.preset:hover{color:var(--text)}
+.preset[aria-pressed=true]{color:var(--text);border-color:var(--text)}
+.swatch{width:22px;height:22px;display:block;border-radius:50%;border:1px solid rgba(255,255,255,.16)}
+.color-row{min-height:46px;border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:8px}
+.color-row label{font-size:11px;color:var(--muted)}
+.color-item{display:flex;align-items:center;gap:9px}
+.hex-text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10px;color:var(--text);font-variant-numeric:tabular-nums}
+.color-input{width:24px;height:24px;appearance:none;border:1px solid var(--rule);background:transparent;padding:0;border-radius:50%;overflow:hidden;cursor:pointer}
+.color-input::-webkit-color-swatch-wrapper{padding:0}.color-input::-webkit-color-swatch{border:0;border-radius:50%}.color-input::-moz-color-swatch{border:0}
+.range{appearance:none;display:block;width:100%;height:2px;background:#4a4a4a;border:0;border-radius:0;accent-color:#f4f4f4;cursor:pointer;margin:8px 0 0}
+.range::-webkit-slider-thumb{appearance:none;height:11px;width:11px;background:#efefef;border-radius:50%;border:0}
+.range::-moz-range-thumb{height:11px;width:11px;background:#efefef;border-radius:50%;border:0}
+.field-hint{font-size:10px;line-height:1.6;color:var(--muted);margin:12px 0 0}
+.panel-bottom{padding:18px 24px 23px;border-top:1px solid var(--rule)}
+.btn-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.primary,.secondary,.toggle-panel{padding:6px 0;border:0;border-bottom:1px solid var(--rule);background:transparent;border-radius:0;font-size:11px;min-height:28px}
+.primary{color:var(--text);border-bottom-color:var(--text)}
+.secondary{color:var(--muted)}
+.primary:hover,.secondary:hover{color:var(--text);border-bottom-color:var(--text)}
+.panel-footnote{font-size:10px;line-height:1.55;color:var(--muted);margin:16px 0 0}
+#close-panel,.toggle-panel{display:none}
+.after-preview{display:flex;align-items:center;justify-content:space-between;gap:18px;color:var(--muted);border-bottom:1px solid var(--rule);padding:20px 0 23px;font-size:11px}
+.after-preview b{font-weight:600;color:var(--text)}
+.after-preview .metrics{display:flex;gap:31px;flex-wrap:wrap}
+.after-preview span b{margin-right:5px}
+.docs{padding:104px 0 80px}
+.docs-head{display:grid;grid-template-columns:minmax(0,1fr) 1fr;gap:24px;align-items:baseline;border-bottom:1px solid var(--rule);padding:0 0 34px}
+.docs-head h2{font-weight:500;font-size:clamp(29px,4vw,52px);line-height:1.07;letter-spacing:-.065em;margin:0}
+.docs-head .micro{letter-spacing:.09em;text-transform:uppercase;font-size:10px}
+.docs-head h2 em{font-style:normal}
+.docs-body{display:grid;grid-template-columns:1fr 1fr;gap:8%;padding:31px 0 60px;border-bottom:1px solid var(--rule)}
+.docs h3{font-size:13px;margin:0 0 19px;font-weight:600}
+.docs p{font-size:13px;line-height:1.7;color:var(--muted);margin:0 0 16px;max-width:450px}
+.code-box{white-space:pre-wrap;color:#dbdbda;background:#181818;border:1px solid var(--rule);padding:21px;font:11px/1.8 ui-monospace,Menlo,monospace;overflow-wrap:anywhere;overflow:auto}
+.code-box .c{color:#949494}.code-box .k{color:#fff}
+.bottom-line{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:27px 0 0;color:var(--muted);font-size:11px}
+.bottom-line a{text-decoration:underline;text-decoration-color:#666;text-underline-offset:4px}
+.bottom-line a:hover{color:var(--text)}
+@media(max-width:950px){.page{width:calc(100% - 48px)}.intro{grid-template-columns:minmax(0,1fr) 255px}.demo-shell{grid-template-columns:minmax(0,1fr) 250px}.panel-body,.panel-bottom{padding-left:18px;padding-right:18px}.panel-top{padding-left:18px;padding-right:18px}}
+@media(max-width:720px){
+ .page{width:calc(100% - 36px)}
+ .intro{padding:58px 0 42px;grid-template-columns:1fr;gap:24px}.intro h1{font-size:clamp(48px,12vw,76px)}.descriptor{max-width:360px;font-size:13px}
+ .preview-toolbar{height:auto;min-height:64px;gap:12px}.toolbar-side{gap:15px;font-size:10px}.toolbar-side .tiny-separator{display:none}
+ .demo-track{height:420svh;min-height:1900px}
+ .demo-shell{height:calc(100svh - 20px);min-height:0;top:10px;grid-template-columns:minmax(0,1fr);border:0}
+ .scene{height:100%;border:1px solid var(--rule)}.scene-copy{width:91%}.scene-copy h2{font-size:clamp(39px,9.2vw,66px)}
+ .scene-footer{left:18px;right:18px;bottom:20px}
+ .toggle-panel{display:block;position:absolute;z-index:9;top:16px;right:18px;border-bottom-color:rgba(255,255,255,.55);font-size:11px;color:#fff;background:rgba(0,0,0,.55);padding:8px 2px}
+ .panel{position:fixed;top:auto;bottom:0;left:0;right:0;z-index:20;width:100%;max-height:82svh;min-height:0;transform:translateY(102%);visibility:hidden;pointer-events:none;transition:transform .24s ease,visibility 0s linear .24s;box-shadow:0 -20px 60px rgba(0,0,0,.6);border-top:1px solid var(--rule)}
+ .panel.open{transform:translateY(0);visibility:visible;pointer-events:auto;transition:transform .24s ease}
+ #close-panel{display:inline-block;color:var(--muted);border:0;background:transparent;min-height:40px;min-width:40px;font-size:19px}
+ .panel-top{padding:18px 23px}.panel-body{padding:20px 23px 0}.panel-bottom{padding:15px 23px 23px}
+ .preset-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.preset{font-size:9px}.field{margin-bottom:26px}
+ .after-preview{align-items:start}.after-preview .metrics{gap:12px 20px}
+ .docs{padding:80px 0 50px}.docs-head,.docs-body{grid-template-columns:1fr;gap:26px}.docs-body{gap:33px;padding-bottom:40px}
+ .bottom-line{flex-wrap:wrap}
+}
+@media(max-width:410px){.preview-toolbar .optional{display:none}.intro h1{font-size:50px}.preset-grid{grid-template-columns:repeat(3,1fr)}}
+@media(prefers-reduced-motion:reduce){.panel,.preset{transition:none}}
+
+</style>
 </head>
 <body>
-  <header class="topbar"><div class="identity"><span class="mark" aria-hidden="true"></span><span>FLARE / SCROLL</span></div><div class="topbar-note">An open-source motion study · No dependencies</div><div class="topbar-right"><a href="#how-it-works">Documentation</a><a href="https://github.com/annademeshko/vibecoding-toolkit/tree/main/skills/flare-scroll" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></header>
-  <div class="intro"><div><div class="overline">An interactive motion study</div><h1>Scroll to shape<br><em>the light.</em></h1></div><div class="descriptor">An organic light transition, shaped by every scroll. Choose a color. Change the mood.</div></div>
+<div class="page">
+  <header class="intro"><div><div class="overline">Interface experiments / 002</div><h1>Flare Scroll.</h1></div><p class="descriptor">A scroll-driven study in light and motion. One organic wave, with an entirely editable color system.</p></header>
+  <div class="preview-toolbar" aria-label="Preview header"><strong>Preview</strong><div class="toolbar-side"><span class="optional">Scroll-controlled</span><span class="tiny-separator" aria-hidden="true"></span><a href="#how-it-works">How it works</a><a href="https://github.com/annademeshko/vibecoding-toolkit/tree/main/skills/flare-scroll" target="_blank" rel="noopener noreferrer">Source ↗</a></div></div>
   <section class="demo-track" id="track" aria-label="Scroll animation playground">
     <span class="track-anchor one" id="scene-one"></span><span class="track-anchor two" id="scene-two"></span><span class="track-anchor three" id="scene-three"></span>
     <div class="demo-shell">
       <div class="scene" id="scene"><canvas id="flare" aria-hidden="true"></canvas>
-        <div class="scene-copy light" id="copy-1"><p class="scene-eyebrow">A study in movement</p><h2>Motion begins<br><em>with you.</em></h2><p>Scroll to wake the light.</p></div>
-        <div class="scene-copy dark" id="copy-2"><p class="scene-eyebrow">Light, in transition</p><h2>Between light<br><em>&amp; shadow.</em></h2><p>One wave, moving at your pace.</p></div>
-        <div class="scene-copy light" id="copy-3"><p class="scene-eyebrow">An open color system</p><h2>One wave.<br><em>Any color.</em></h2><p>Change the hue. Keep the flow.</p></div>
+        <div class="scene-copy light" id="copy-1"><p class="scene-eyebrow">Motion study</p><h2>Motion begins<br><em>with you.</em></h2><p>Scroll to wake the light.</p></div>
+        <div class="scene-copy dark" id="copy-2"><p class="scene-eyebrow">Transition</p><h2>Between light<br><em>&amp; shadow.</em></h2><p>One wave, moving at your pace.</p></div>
+        <div class="scene-copy light" id="copy-3"><p class="scene-eyebrow">Color system</p><h2>One wave.<br><em>Any color.</em></h2><p>Change the hue. Keep the flow.</p></div>
         <div class="scene-footer" id="scene-footer"><span id="scene-status">Scroll to explore ↓</span></div>
       </div>
-      <button type="button" class="toggle-panel" id="toggle-panel" aria-expanded="false" aria-controls="controls">Customize effect ↗</button>
+      <button type="button" class="toggle-panel" id="toggle-panel" aria-expanded="false" aria-controls="controls">Customize ↗</button>
       <aside class="panel" id="controls" aria-label="Effect settings">
-        <div class="panel-top"><div><div class="micro" style="margin-bottom:11px">Live controls</div><h2>Make it yours.</h2></div><button class="secondary" id="close-panel" type="button" style="padding:0 10px;min-height:29px" aria-label="Close controls">×</button></div>
+        <div class="panel-top"><h2>Customize</h2><button class="secondary" id="close-panel" type="button" aria-label="Close controls">×</button></div>
         <div class="panel-body">
-          <section class="field" aria-labelledby="palettes-label"><div class="field-title"><span id="palettes-label">Presets</span><span class="micro">Choose a hue</span></div><div class="preset-grid" id="presets">
-            <button class="preset" type="button" data-preset="blue" aria-pressed="true"><span class="swatch" style="background:#2e74e2"></span>Electric</button>
+          <section class="field" aria-labelledby="palettes-label"><div class="field-title"><span id="palettes-label">Palette</span><span class="micro">Presets</span></div><div class="preset-grid" id="presets">
+            <button class="preset" type="button" data-preset="blue" aria-pressed="true"><span class="swatch" style="background:#2e74e2"></span>Blue</button>
             <button class="preset" type="button" data-preset="rose" aria-pressed="false"><span class="swatch" style="background:#ed5c9c"></span>Rose</button>
             <button class="preset" type="button" data-preset="violet" aria-pressed="false"><span class="swatch" style="background:#9368f5"></span>Violet</button>
-            <button class="preset" type="button" data-preset="acid" aria-pressed="false"><span class="swatch" style="background:#a1d65b"></span>Acid</button>
+            <button class="preset" type="button" data-preset="acid" aria-pressed="false"><span class="swatch" style="background:#a1d65b"></span>Green</button>
             <button class="preset" type="button" data-preset="amber" aria-pressed="false"><span class="swatch" style="background:#f5a34c"></span>Amber</button>
             <button class="preset" type="button" data-preset="cyan" aria-pressed="false"><span class="swatch" style="background:#32c6cb"></span>Cyan</button>
           </div></section>
-          <section class="field" aria-label="Custom colors"><div class="field-title"><span>Color system</span><span class="micro">HEX</span></div>
-            <div class="color-row"><label for="accent">Accent color</label><div class="color-item"><span class="hex-text" id="accent-hex">#2E74E2</span><input class="color-input" type="color" id="accent" value="#2e74e2"></div></div>
-            <div class="color-row"><label for="dark">Dark endpoint</label><div class="color-item"><span class="hex-text" id="dark-hex">#000000</span><input class="color-input" type="color" id="dark" value="#000000"></div></div>
-            <div class="color-row"><label for="light">Light endpoint</label><div class="color-item"><span class="hex-text" id="light-hex">#FFFFFF</span><input class="color-input" type="color" id="light" value="#ffffff"></div></div>
-            <p class="field-hint">Change one color — the intermediate gradient is generated automatically.</p>
+          <section class="field" aria-label="Custom colors"><div class="field-title"><span>Color stops</span><span class="micro">HEX</span></div>
+            <div class="color-row"><label for="accent">Accent</label><div class="color-item"><span class="hex-text" id="accent-hex">#2E74E2</span><input class="color-input" type="color" id="accent" value="#2e74e2"></div></div>
+            <div class="color-row"><label for="dark">Dark</label><div class="color-item"><span class="hex-text" id="dark-hex">#000000</span><input class="color-input" type="color" id="dark" value="#000000"></div></div>
+            <div class="color-row"><label for="light">Light</label><div class="color-item"><span class="hex-text" id="light-hex">#FFFFFF</span><input class="color-input" type="color" id="light" value="#ffffff"></div></div>
+            <p class="field-hint">Edit one color to generate a full gradient.</p>
           </section>
-          <section class="field"><div class="field-title"><label for="softness">Gradient softness</label><output id="softness-value" for="softness">1.25×</output></div><input class="range" id="softness" type="range" min="0.55" max="2.4" value="1.25" step="0.05"><p class="field-hint">Higher values dissolve the color boundaries.</p></section>
-          <section class="field" style="margin-bottom:4px"><div class="field-title"><label for="crest">Wave crest</label><output id="crest-value" for="crest">1.00×</output></div><input class="range" id="crest" type="range" min="0.45" max="1.65" value="1" step="0.05"><p class="field-hint">Controls the height of both organic curves.</p></section>
+          <section class="field"><div class="field-title"><label for="softness">Softness</label><output id="softness-value" for="softness">1.25×</output></div><input class="range" id="softness" type="range" min="0.55" max="2.4" value="1.25" step="0.05"></section>
+          <section class="field"><div class="field-title"><label for="crest">Wave crest</label><output id="crest-value" for="crest">1.00×</output></div><input class="range" id="crest" type="range" min="0.45" max="1.65" value="1" step="0.05"></section>
         </div>
-        <div class="panel-bottom"><div class="btn-row"><button class="primary" id="copy-config" type="button">Copy configuration ↗</button><button class="secondary" id="reset" type="button">Reset</button></div><p class="panel-footnote">Scroll to see the transitions. Every control updates the shader in real time.</p></div>
+        <div class="panel-bottom"><div class="btn-row"><button class="primary" id="copy-config" type="button">Copy configuration ↗</button><button class="secondary" id="reset" type="button">Reset</button></div><p class="panel-footnote">Changes appear in the preview instantly.</p></div>
       </aside>
     </div>
   </section>
-  <section class="docs" id="how-it-works"><div class="docs-head"><span class="micro">Behind the effect</span><h2>Shaped by scroll.<br><em>Made to feel.</em></h2></div>
-    <div class="docs-body"><div><h3>What you're seeing</h3><p>A signed-distance wavefront travels vertically through two pinned scenes. The gradient follows that curve, not the screen axis. A WebGL fragment shader renders nine overlapping color stops with adjustable softness. Scroll position determines every frame, in both directions.</p><p>The initial frame is completely dark. The light appears only after the user begins scrolling. A small Canvas 2D fallback is included for browsers without WebGL.</p></div>
-      <div><h3>Quick start</h3><div class="code-box"><span class="c">// One accent changes the entire flare.</span>
+  <div class="after-preview"><div class="metrics" aria-label="Effect properties"><span><b>WebGL</b> renderer</span><span><b>2</b> wave transitions</span><span><b>9</b> color stops</span></div><span>Scroll up to replay ↑</span></div>
+  <section class="docs" id="how-it-works"><div class="docs-head"><div class="micro">Under the hood</div><h2>Made for<br>the scroll.</h2></div>
+    <div class="docs-body"><div><h3>How it works</h3><p>The wavefront follows the page's scroll position, creating two reversible transitions between light and dark. A WebGL shader blends nine color stops along the curve, giving the light its soft, dimensional edge.</p><p>The first frame is completely dark. Light only appears as scrolling begins. A Canvas 2D fallback is included for browsers without WebGL.</p></div>
+      <div><h3>Quick start</h3><div class="code-box"><span class="c">// One accent changes the full flare.</span>
 <span class="k">const</span> flare = new FlareScroll(
   document.querySelector('canvas'), {
     colors: {
@@ -95,17 +160,19 @@
       accent: '#ED5C9C',
       light: '#FFFFFF'
     },
-    softness: 1.45,
-    crest: 1.10
+    softness: 1.25,
+    crest: 1.00
   }
 );
 
-<span class="c">// 0 → 1, driven by your scroll timeline.</span>
+<span class="c">// Scroll progress: 0 → 1.</span>
 flare.setProgress(progress);</div></div></div>
-    <div class="bottom-line"><span>FLARE SCROLL · A reusable motion experiment</span><a href="https://github.com/annademeshko/vibecoding-toolkit/tree/main/skills/flare-scroll" target="_blank" rel="noopener noreferrer">View source / documentation ↗</a></div>
+    <div class="bottom-line"><span>Flare Scroll · Original motion experiment</span><a href="https://github.com/annademeshko/vibecoding-toolkit/tree/main/skills/flare-scroll" target="_blank" rel="noopener noreferrer">View source / documentation ↗</a></div>
   </section>
-  <script src="../src/flare-scroll.js"></script>
-  <script>
+</div>
+
+<script src="../src/flare-scroll.js"></script>
+<script>
     (()=>{
       'use strict';
       const $=id=>document.getElementById(id);
