@@ -4,6 +4,12 @@
 
 This is not an official Adam Perlis distribution and does **not** automatically install Adam's native Claude marketplace, Walkie app, or Omarchy widget. The bundle contains 6 foundational workflows, 3 UI-motion workflows, 2 brand/3D integration workflows, and 12 video-production workflows. The skills are actionable instructions, not compiled shader engines or editing applications.
 
+## Installation
+
+- **ChatGPT:** open https://chatgpt.com/plugins/plugins_6b046d93eb988191bf0f09ae2884cfe9 to access the private plugin; if not activated yet, choose Install or Add in the Plugin Directory. New sessions may be needed for skill discovery.
+- **Codex:** copy a specific directory from `skills/` to a recognized Codex skill location, or install the plugin package using your environment's supported plugin system.
+- **Standalone ZIP:** downloadable alongside this bundle; it is a complete plugin archive, not an app installation.
+
 ## Tool routing
 
 - In ChatGPT, use available browser/search, code tools, GitHub, Figma, video editing and file tools as supported; do not make up their availability.

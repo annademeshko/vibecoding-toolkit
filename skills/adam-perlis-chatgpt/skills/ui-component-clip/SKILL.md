@@ -1,6 +1,6 @@
 ---
 name: ui-component-clip
-description: Seamless short loop of a real component. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Seamless short loop of a real component. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # ui-component-clip — ChatGPT adaptation

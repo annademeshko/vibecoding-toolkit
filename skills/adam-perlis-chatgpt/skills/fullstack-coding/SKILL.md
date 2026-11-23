@@ -1,6 +1,6 @@
 ---
 name: fullstack-coding
-description: Plan, implement, debug, verify and ship frontend or backend code. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Plan, implement, debug, verify and ship frontend or backend code. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # fullstack-coding — ChatGPT adaptation

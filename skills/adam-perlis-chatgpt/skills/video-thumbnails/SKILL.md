@@ -1,6 +1,6 @@
 ---
 name: video-thumbnails
-description: Readable video covers and short animated preview loops. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Readable video covers and short animated preview loops. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # video-thumbnails — ChatGPT adaptation

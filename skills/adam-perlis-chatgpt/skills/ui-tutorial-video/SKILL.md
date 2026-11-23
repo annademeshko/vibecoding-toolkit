@@ -1,6 +1,6 @@
 ---
 name: ui-tutorial-video
-description: Step-by-step tutorial of a real flow. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Step-by-step tutorial of a real flow. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # ui-tutorial-video — ChatGPT adaptation

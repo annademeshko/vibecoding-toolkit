@@ -1,6 +1,6 @@
 ---
 name: feature-video
-description: Show one working product feature. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Show one working product feature. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # feature-video — ChatGPT adaptation

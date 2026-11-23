@@ -1,11 +1,11 @@
 ---
 name: thermal-finger-trail
-description: Reactive heat/paint shader for pointer and touch. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Reactive heat/paint shader for pointer and touch. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # thermal-finger-trail — ChatGPT adaptation
 
-**Origin:** https://github.com/adamperlis/adam-plugins/plugins/ui-motion  
+**Origin:** https://github.com/adamperlis/adam-plugins/tree/main/plugins/ui-motion  
 **Adaptation:** Independently authored task instructions for ChatGPT, based on the public workflow description by Adam Perlis. Not an official upstream release.  
 **Availability:** Instructions and planning always work. Code execution, Figma, browser automation, video editing, and rendering work only when the relevant tools and permissions are available in this session.
 

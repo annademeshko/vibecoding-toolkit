@@ -1,11 +1,11 @@
 ---
 name: companion-bot-integration
-description: Integrate Adam’s optional 3D companion without copying assets. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Integrate Adam’s optional 3D companion without copying assets. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # companion-bot-integration — ChatGPT adaptation
 
-**Origin:** https://github.com/adamperlis/adam-plugins/plugins/companion-bot  
+**Origin:** https://github.com/adamperlis/adam-plugins/tree/main/plugins/companion-bot  
 **Adaptation:** Independently authored task instructions for ChatGPT, based on the public workflow description by Adam Perlis. Not an official upstream release.  
 **Availability:** Instructions and planning always work. Code execution, Figma, browser automation, video editing, and rendering work only when the relevant tools and permissions are available in this session.
 

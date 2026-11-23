@@ -1,6 +1,6 @@
 ---
 name: frontend-design-director
-description: Marketing websites, portfolio, landing pages and concept sites. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Marketing websites, portfolio, landing pages and concept sites. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # frontend-design-director — ChatGPT adaptation

@@ -1,6 +1,6 @@
 ---
 name: narrated-product-film
-description: Voice-led product story with visual proof. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Voice-led product story with visual proof. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # narrated-product-film — ChatGPT adaptation

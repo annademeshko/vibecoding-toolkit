@@ -1,11 +1,11 @@
 ---
 name: brand-system-capture
-description: Turn a project’s own visual identity into reusable design rules. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Turn a project’s own visual identity into reusable design rules. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # brand-system-capture — ChatGPT adaptation
 
-**Origin:** https://github.com/adamperlis/adam-plugins/plugins/gaia-brand  
+**Origin:** https://github.com/adamperlis/adam-plugins/tree/main/plugins/gaia-brand  
 **Adaptation:** Independently authored task instructions for ChatGPT, based on the public workflow description by Adam Perlis. Not an official upstream release.  
 **Availability:** Instructions and planning always work. Code execution, Figma, browser automation, video editing, and rendering work only when the relevant tools and permissions are available in this session.
 

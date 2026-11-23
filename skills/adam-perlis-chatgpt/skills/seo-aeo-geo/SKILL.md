@@ -1,6 +1,6 @@
 ---
 name: seo-aeo-geo
-description: SEO and AI-search visibility audits for websites. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "SEO and AI-search visibility audits for websites. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # seo-aeo-geo — ChatGPT adaptation

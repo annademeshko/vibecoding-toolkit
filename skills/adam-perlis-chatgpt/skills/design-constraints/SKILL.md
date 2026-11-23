@@ -1,6 +1,6 @@
 ---
 name: design-constraints
-description: Precise spacing, typography, layout, no generic AI-looking UI. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Precise spacing, typography, layout, no generic AI-looking UI. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # design-constraints — ChatGPT adaptation

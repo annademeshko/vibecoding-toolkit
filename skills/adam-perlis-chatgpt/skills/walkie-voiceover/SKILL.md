@@ -1,6 +1,6 @@
 ---
 name: walkie-voiceover
-description: Optional Walkie narration workflow. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Optional Walkie narration workflow. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # walkie-voiceover — ChatGPT adaptation

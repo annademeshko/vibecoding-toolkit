@@ -1,6 +1,6 @@
 ---
 name: brand-film
-description: Narrative brand film for product launch. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Narrative brand film for product launch. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # brand-film — ChatGPT adaptation

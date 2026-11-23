@@ -1,6 +1,6 @@
 ---
 name: social-video-hooks
-description: Hooks and beat sheets for short-form product videos. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Hooks and beat sheets for short-form product videos. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # social-video-hooks — ChatGPT adaptation

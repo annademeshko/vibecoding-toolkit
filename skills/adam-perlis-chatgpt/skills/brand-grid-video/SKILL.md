@@ -1,6 +1,6 @@
 ---
 name: brand-grid-video
-description: Multi-panel product and design system video. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Multi-panel product and design system video. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # brand-grid-video — ChatGPT adaptation

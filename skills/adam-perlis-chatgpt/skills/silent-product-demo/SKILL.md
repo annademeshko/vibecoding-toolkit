@@ -1,6 +1,6 @@
 ---
 name: silent-product-demo
-description: Product demo told entirely with UI. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Product demo told entirely with UI. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # silent-product-demo — ChatGPT adaptation

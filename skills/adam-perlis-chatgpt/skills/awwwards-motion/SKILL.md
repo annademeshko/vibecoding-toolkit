@@ -1,6 +1,6 @@
 ---
 name: awwwards-motion
-description: Creative coding: scroll physics, GLSL, R3F, shaders, 3D. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Creative coding: scroll physics, GLSL, R3F, shaders, 3D. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # awwwards-motion — ChatGPT adaptation

@@ -1,6 +1,6 @@
 ---
 name: video-brand-system
-description: Brand-specific reusable video rules. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Brand-specific reusable video rules. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # video-brand-system — ChatGPT adaptation

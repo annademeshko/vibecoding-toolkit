@@ -1,6 +1,6 @@
 ---
 name: creator-video
-description: Talking-head creator video with real product footage. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Talking-head creator video with real product footage. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # creator-video — ChatGPT adaptation

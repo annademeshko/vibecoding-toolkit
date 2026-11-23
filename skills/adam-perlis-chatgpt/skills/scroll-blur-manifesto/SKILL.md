@@ -1,11 +1,11 @@
 ---
 name: scroll-blur-manifesto
-description: Text sharpening reveal tied to scroll. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Text sharpening reveal tied to scroll. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # scroll-blur-manifesto — ChatGPT adaptation
 
-**Origin:** https://github.com/adamperlis/adam-plugins/plugins/ui-motion  
+**Origin:** https://github.com/adamperlis/adam-plugins/tree/main/plugins/ui-motion  
 **Adaptation:** Independently authored task instructions for ChatGPT, based on the public workflow description by Adam Perlis. Not an official upstream release.  
 **Availability:** Instructions and planning always work. Code execution, Figma, browser automation, video editing, and rendering work only when the relevant tools and permissions are available in this session.
 

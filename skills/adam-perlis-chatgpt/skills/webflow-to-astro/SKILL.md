@@ -1,6 +1,6 @@
 ---
 name: webflow-to-astro
-description: Migration of Webflow to Astro/static hosting. Use when the user asks to do this workflow in ChatGPT or Codex.
+description: "Migration of Webflow to Astro/static hosting. Use when the user asks to do this workflow in ChatGPT or Codex."
 ---
 
 # webflow-to-astro — ChatGPT adaptation
