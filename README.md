@@ -74,6 +74,14 @@ Source-derived **silver/graphite chrome rim** with three narrow rainbow spectral
 - [Reusable AI prompt](skills/liquid-metal-border/prompts/implement-liquid-metal-border.md)
 - [Private ChatGPT plugin](https://chatgpt.com/plugins/plugins_6b046c0da82081918f1ed6655d60d261)
 
+## Flare Scroll — configurable WebGL transition
+
+An organic, scroll-driven light wave with a defined central crest, soft gradients and **one-click palette customization**. Change the main hue using a single HEX value (blue, pink or any other color), tune softness and wave height, or specify nine gradient stops.
+
+- [Interactive motion playground](skills/flare-scroll/demo/index.html) · [Standalone HTML demo](skills/flare-scroll/flare-scroll-standalone.html)
+- [Setup, color API and technical documentation](skills/flare-scroll/README.md)
+- [Reusable JavaScript renderer](skills/flare-scroll/src/flare-scroll.js) · [Implementation skill](skills/flare-scroll/SKILL.md) · [Agent prompt](skills/flare-scroll/prompts/implement-flare-scroll.md)
+
 ## Как пользоваться
 
 **Для дизайн-задачи** — взять `skills/product-ui-craft/SKILL.md` и соответствующий файл из `prompts/`.
