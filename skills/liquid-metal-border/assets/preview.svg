@@ -1,21 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" role="img" aria-label="Metal chrome border around contact icons and a sample case card on a dark UI background">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">Liquid Metal Border — UI component study</title>
+<desc id="desc">Illustrative dark theme of a large Liquid Metal title, one chrome-outlined button and an architectural editorial card with a chrome hover frame.</desc>
 <defs>
-<linearGradient id="rim" x1="0" x2="1" y2=".5"><stop stop-color="#151d47"/><stop offset=".06" stop-color="#8038fa"/><stop offset=".12" stop-color="#156cff"/><stop offset=".18" stop-color="#00d9ff"/><stop offset=".24" stop-color="#76e3ba"/><stop offset=".27" stop-color="#ffe157"/><stop offset=".32" stop-color="#ff622f"/><stop offset=".36" stop-color="#f4f8ff"/><stop offset=".43" stop-color="#616d83"/><stop offset=".65" stop-color="#161c2d"/><stop offset=".82" stop-color="#e8eef8"/><stop offset="1" stop-color="#3a4456"/></linearGradient>
-<linearGradient id="chrome" x1="0" x2="1" y2="1"><stop stop-color="#d8dae1"/><stop offset=".3" stop-color="#525866"/><stop offset=".48" stop-color="#171b25"/><stop offset=".75" stop-color="#f5f7fc"/><stop offset="1" stop-color="#808c9b"/></linearGradient>
-<linearGradient id="art" x1="0" x2="1" y2="1"><stop stop-color="#30384b"/><stop offset=".55" stop-color="#1b2333"/><stop offset="1" stop-color="#4c5263"/></linearGradient>
+  <linearGradient id="silver" x1="0" y1="0" x2="1" y2=".85"><stop stop-color="#ccd0da"/><stop offset=".11" stop-color="#343a47"/><stop offset=".25" stop-color="#f4f7fd"/><stop offset=".48" stop-color="#646c7d"/><stop offset=".7" stop-color="#e0e4e9"/><stop offset="1" stop-color="#4a5261"/></linearGradient>
+  <linearGradient id="spectrum" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7457fa"/><stop offset=".17" stop-color="#47a9fb"/><stop offset=".32" stop-color="#46ddca"/><stop offset=".43" stop-color="#e3e991"/><stop offset=".51" stop-color="#ffbc58"/><stop offset=".58" stop-color="#fb5688"/><stop offset=".76" stop-color="#c4cbd2"/><stop offset="1" stop-color="#323744"/></linearGradient>
+  <linearGradient id="architecture" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#11131a"/><stop offset=".52" stop-color="#252a36"/><stop offset="1" stop-color="#4e545f"/></linearGradient>
+  <linearGradient id="structure" x1=".2" y1="0" x2="1" y2="1"><stop stop-color="#fafafa"/><stop offset=".6" stop-color="#9da0a6"/><stop offset="1" stop-color="#444952"/></linearGradient>
+  <filter id="blur"><feGaussianBlur stdDeviation="12"/></filter>
 </defs>
-<rect width="1200" height="580" fill="#0c0e12"/>
-<text x="72" y="61" font-family="Arial,sans-serif" font-size="13" fill="#d9dee7">AD / COMPONENT LIBRARY</text>
-<text x="72" y="138" font-family="Arial,sans-serif" font-size="13" letter-spacing="2" fill="#919ba9">UI MATERIAL STUDY / 001</text>
-<text x="68" y="223" font-family="Arial,sans-serif" font-size="75" letter-spacing="-5" fill="#e9edf3">Liquid Metal</text>
-<text x="68" y="299" font-family="Arial,sans-serif" font-size="75" letter-spacing="-5" fill="#7f8998">Border.</text>
-<text x="72" y="342" font-family="Arial,sans-serif" font-size="16" fill="#9ca5b2">Silver chrome. Prismatic optical streaks. One slow 16-second orbit.</text>
-<rect x="70" y="389" width="520" height="139" rx="21" fill="#151923" stroke="#343d4c"/>
-<rect x="95" y="420" width="470" height="83" rx="23" fill="#1a2028" stroke="url(#rim)" stroke-width="3"/>
-<g fill="#242b37" stroke="#48505e"><rect x="125" y="431" width="60" height="60" rx="14"/><rect x="239" y="431" width="60" height="60" rx="14"/><rect x="353" y="431" width="60" height="60" rx="14"/><rect x="467" y="431" width="60" height="60" rx="14"/></g>
-<g fill="#ccd5e1" font-family="Arial,sans-serif" font-size="24" text-anchor="middle"><text x="155" y="469">◈</text><text x="269" y="469">in</text><text x="383" y="469">@</text><text x="497" y="469">□</text></g>
-<rect x="618" y="389" width="510" height="139" rx="21" fill="#151923" stroke="#343d4c"/>
-<rect x="645" y="416" width="459" height="87" rx="23" fill="url(#art)" stroke="url(#chrome)" stroke-width="3"/>
-<text x="668" y="476" font-family="Arial,sans-serif" font-size="47" fill="#e4eaf4">Wave.</text><text x="988" y="472" font-family="Arial,sans-serif" font-size="15" fill="#9daaba">CASE 06</text>
-<text x="72" y="559" font-family="Arial,sans-serif" font-size="12" fill="#8793a6">Anna Demeshko / Vibecoding Toolkit</text>
+<rect width="1200" height="720" fill="#111316"/>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="52" y="35" width="33" height="33" rx="9" fill="none" stroke="#65676f"/><text x="61" y="56" font-size="13" fill="#f5f5f3" font-weight="bold">AD</text>
+  <text x="98" y="56" font-size="12" fill="#f5f5f3" font-weight="bold" letter-spacing="1.3">VIBECODING TOOLKIT / 001</text>
+  <circle cx="1017" cy="51" r="4" fill="#b6d2ad"/><text x="1030" y="56" font-size="12" fill="#90959c">Interactive study</text>
+  <line x1="52" y1="84" x2="1148" y2="84" stroke="#3e4147"/>
+  <text x="52" y="129" fill="#90959c" font-size="12" letter-spacing="2">INTERFACE MATERIALS / 001</text>
+  <text x="45" y="223" fill="#f5f5f3" font-size="84" letter-spacing="-7">Liquid Metal</text>
+  <text x="45" y="307" fill="#90959c" font-size="84" letter-spacing="-7">Border.</text>
+  <text x="842" y="218" fill="#90959c" font-size="16">A fine chrome edge with subtle</text>
+  <text x="842" y="244" fill="#90959c" font-size="16">prismatic reflections.</text>
+  <text x="842" y="270" fill="#90959c" font-size="16">Only the light travels.</text>
+  <line x1="52" y1="345" x2="1148" y2="345" stroke="#3e4147"/>
+  <text x="52" y="376" fill="#f5f5f3" font-size="13" font-weight="bold">Live playground</text>
+  <rect x="823" y="357" width="186" height="28" rx="14" fill="#23252b" stroke="#4a4d55"/>
+  <rect x="827" y="360" width="57" height="22" rx="11" fill="#f5f5f3"/><text x="841" y="375" font-size="11" fill="#111316">Dark</text>
+  <text x="901" y="375" font-size="11" fill="#90959c">Light</text><text x="956" y="375" font-size="11" fill="#90959c">Pink</text>
+  <rect x="52" y="401" width="534" height="245" rx="18" fill="#191b20" stroke="#44464c"/>
+  <text x="76" y="427" font-size="12" fill="#f5f5f3" letter-spacing="1.2">ALWAYS ON</text>
+  <text x="532" y="427" font-size="11" fill="#90959c">01 / BUTTON</text>
+  <circle cx="318" cy="521" r="118" fill="none" stroke="#5c6069" stroke-opacity=".24"/>
+  <rect x="188" y="475" width="260" height="92" rx="22" fill="#181c23" stroke="url(#silver)" stroke-width="2"/>
+  <path d="M188 527 Q187 475 238 475 H369" stroke="url(#spectrum)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="246" y="532" fill="#f5f5f3" font-size="24" font-weight="500">Liquid Metal</text>
+  <rect x="603" y="401" width="545" height="245" rx="18" fill="#191b20" stroke="#44464c"/>
+  <text x="629" y="427" fill="#f5f5f3" font-size="12" letter-spacing="1.2">ON INTERACTION</text>
+  <text x="1085" y="427" font-size="11" fill="#90959c">02 / CARD</text>
+  <rect x="705" y="445" width="341" height="175" rx="14" fill="#1b1d22" stroke="url(#silver)" stroke-width="2"/>
+  <rect x="708" y="448" width="335" height="114" rx="12" fill="url(#architecture)"/>
+  <path d="M845 565 C830 492 835 446 905 436 C972 424 1010 458 1043 498 L1043 561 Z" fill="url(#structure)"/>
+  <path d="M838 544 C861 505 910 470 961 488 C996 499 1016 513 1043 536" stroke="#f1f2f4" stroke-opacity=".55" stroke-width="16" fill="none"/>
+  <text x="725" y="480" font-size="11" fill="#d4d7de" letter-spacing="1.3">MATERIAL EXPLORATION</text>
+  <text x="725" y="540" font-size="31" fill="#f5f5f3" letter-spacing="-1.5">Form Study.</text>
+  <text x="726" y="591" font-size="15" fill="#f5f5f3">Where form meets light</text>
+  <text x="726" y="608" font-size="11" fill="#9a9fa8">Editorial card / Hover border</text>
+  <path d="M703 612 L703 470 Q703 443 732 443 H802" fill="none" stroke="url(#spectrum)" stroke-width="2.7" opacity=".95"/>
+  <line x1="52" y1="671" x2="1148" y2="671" stroke="#3e4147"/>
+  <text x="52" y="697" font-size="12" fill="#90959c">Anna Demeshko / Liquid Metal Border</text><text x="1040" y="697" font-size="12" fill="#90959c">UI Study 1.1</text>
+</g>
 </svg>
