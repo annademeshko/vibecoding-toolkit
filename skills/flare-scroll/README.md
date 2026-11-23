@@ -18,9 +18,9 @@ Flare Scroll is a dependency-free WebGL effect inspired by a screen-recorded mot
 - **Two organic waves.** Central crest and inverted V contour with configurable amplitude, width and timing.
 - **Portable.** One JavaScript file, no build step, no frameworks, Canvas 2D fallback for unavailable WebGL.
 
-### Demo typography
+### Demo visual language
 
-The playground uses **DM Sans** for UI and **Instrument Serif Italic** for editorial headline accents. Fonts are requested from Google Fonts for the demo only; system sans/serif fallbacks keep the standalone animation usable offline. The renderer itself remains font-agnostic and dependency-free.
+The playground follows the minimal, dark editorial design system of the [Liquid Metal Border demo](../liquid-metal-border/demo/index.html): a `#121212` canvas, neutral Arial/system typography, large restrained title, thin grey rules, flat surfaces, and compact settings. Color is reserved for the animated wave and its editable swatches. No external fonts are loaded. The renderer itself remains style-agnostic and dependency-free.
 
 ## Preview locally
 
