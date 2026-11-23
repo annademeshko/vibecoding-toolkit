@@ -1,0 +1,4 @@
+interface:
+  display_name: "Liquid Metal Border"
+  short_description: "Apply Anna's chrome/prism border"
+  default_prompt: "Use $liquid-metal-border to apply the exact border from my portfolio."

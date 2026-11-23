@@ -10,7 +10,8 @@
 vibecoding-toolkit/
 ├── skills/                   # Инструкции для AI-агентов
 │   ├── product-ui-craft/     # Unslop + Figma + iOS + web + motion
-│   └── next-move-theory/    # Advanced JTBD + product strategy
+│   ├── next-move-theory/    # Advanced JTBD + product strategy
+│   └── liquid-metal-border/ # Chrome/prism CSS effect + preview + demo
 ├── snippets/                 # Рабочий переиспользуемый код
 │   ├── css/                  # CSS-токены и визуальные эффекты
 │   ├── react/                # React/TypeScript utilities
@@ -62,6 +63,16 @@ cp -R skills/product-ui-craft .claude/skills/product-ui-craft
 [Все сценарии, установка и примеры](skills/next-move-theory/README.md) · [Основной скилл](skills/next-move-theory/SKILL.md) · [Приватный плагин ChatGPT](https://chatgpt.com/plugins/plugins_6b0465893afc81919b4360eaa8f52e3a)
 
 **Лицензия:** производные материалы — CC BY-NC-SA 4.0, автор Ivan Zamesin; на них не распространяется MIT-лицензия этой библиотеки. [Оригинальный репозиторий](https://github.com/zamesin/Next-Move-Theory-Canon-and-Skills).
+
+## Liquid Metal Border — reusable CSS skill
+
+Source-derived **silver/graphite chrome rim** with three narrow rainbow spectral glints and a 16-second orbit, as used on the contact dock and hover case cards of [Anna's portfolio](https://annademeshko.com/). No WebGL and no JavaScript dependencies for the border itself.
+
+- [Full skill and implementation guide](skills/liquid-metal-border/README.md)
+- [Ready-to-copy CSS](skills/liquid-metal-border/src/liquid-metal-border.css)
+- [Interactive UI demo](skills/liquid-metal-border/demo/index.html) · [Preview](skills/liquid-metal-border/assets/preview.svg)
+- [Reusable AI prompt](skills/liquid-metal-border/prompts/implement-liquid-metal-border.md)
+- [Private ChatGPT plugin](https://chatgpt.com/plugins/plugins_6b046c0da82081918f1ed6655d60d261)
 
 ## Как пользоваться
 

@@ -33,3 +33,9 @@ This repository is a curated library of reusable vibecoding assets, not a produc
 - Separate verified evidence, derivations and untested hypotheses. Propose falsifiable Riskiest Assumption Tests before building.
 - For exact AJTBD methodology consult the public canon by Ivan Zamesin; do not substitute generic JTBD definitions.
 - The NMT-derived skills are CC BY-NC-SA 4.0, not MIT.
+
+## Liquid Metal Border effect
+
+- When asked for the metallic/chromatic border from Anna's portfolio, first read `skills/liquid-metal-border/SKILL.md`, then copy `skills/liquid-metal-border/src/liquid-metal-border.css` rather than rebuilding a generic gradient.
+- Use its HTML demo and implementation prompt. Preserve existing design and interactions, use `always` or `hover` mode, and verify reduced motion, keyboard focus and responsiveness.
+- Do not confuse the rim with the separate WebGL/theme-wipe liquid metal transition.
