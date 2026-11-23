@@ -1,0 +1,31 @@
+{
+  "interface": {
+    "capabilities": [],
+    "category": "Productivity",
+    "defaultPrompt": "Use the Adam Perlis ChatGPT Toolkit to plan, implement, and verify this UI/design/motion task, preserving my existing design system.",
+    "developerName": "Anna Rubanenko",
+    "displayName": "Adam Perlis \u00b7 ChatGPT Toolkit",
+    "longDescription": "Design direction, constrained product UI, scroll and shader motion, coding, SEO, migrations and all 12 video-production workflows adapted for ChatGPT/Codex. Includes source attribution and tool-aware fallbacks.",
+    "shortDescription": "23 adapted design & build workflows"
+  },
+  "name": "adam-perlis-chatgpt-toolkit",
+  "version": "1.0.0",
+  "description": "23 independently adapted ChatGPT/Codex skills inspired by Adam Perlis public design, motion, code, SEO and video skill catalog.",
+  "author": {
+    "name": "Anna Rubanenko",
+    "email": "annarubanenko8@gmail.com"
+  },
+  "keywords": [
+    "skills",
+    "design",
+    "motion",
+    "video",
+    "codex",
+    "chatgpt",
+    "frontend",
+    "webgl",
+    "seo"
+  ],
+  "homepage": "https://github.com/annademeshko/vibecoding-toolkit/tree/main/skills/adam-perlis-chatgpt",
+  "skills": "./skills"
+}

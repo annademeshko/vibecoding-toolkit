@@ -1,0 +1,3 @@
+interface:
+  display_name: "Webflow To Astro"
+  short_description: "Migration of Webflow to Astro/static hosting"

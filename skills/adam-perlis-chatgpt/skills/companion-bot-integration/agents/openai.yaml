@@ -1,0 +1,3 @@
+interface:
+  display_name: "Companion Bot Integration"
+  short_description: "Integrate Adam’s optional 3D companion without copying assets"

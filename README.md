@@ -94,3 +94,14 @@ Source-derived **silver/graphite chrome rim** with three narrow rainbow spectral
 ## Лицензии
 
 Оригинальный код и документы этого репозитория — MIT (см. `LICENSE`). Материалы `skills/product-ui-craft/`, адаптированные из Unslop, распространяются на условиях **CC BY 4.0** с указанием авторства Damir Sokolovsky. См. атрибуцию внутри папки скилла. Next Move Theory использует CC BY-NC-SA 4.0; см. skills/next-move-theory/ATTRIBUTION.md.
+
+## Adam Perlis → ChatGPT Toolkit (23 skills)
+
+Адаптированный под ChatGPT и Codex набор рабочих инструкций по дизайну, frontend, WebGL/motion, SEO и производству видео. Сохранены ссылки на первоисточники и ограничения платформ.
+
+- [Полный каталог и инструкции](skills/adam-perlis-chatgpt/README.md)
+- [Сопоставление всех 9 проектов Adam Perlis](skills/adam-perlis-chatgpt/SOURCE-AUDIT.md)
+- [Приватный плагин ChatGPT](https://chatgpt.com/plugins/plugins_6b046d93eb988191bf0f09ae2884cfe9)
+- [ZIP с навыками для ChatGPT/Codex](skills/adam-perlis-chatgpt/README.md#installation)
+
+**Важно:** скилл — это инструкция, а не самостоятельная установка внешнего MCP-сервера или редактора. Walkie MCP требует отдельного подключения, а Omarchy Walkie — Linux/Omarchy. Оригинальные бренд-ассеты Gaia и исходники 3D-персонажа не включены.

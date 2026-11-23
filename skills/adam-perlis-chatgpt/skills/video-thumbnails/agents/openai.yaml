@@ -1,0 +1,3 @@
+interface:
+  display_name: "Video Thumbnails"
+  short_description: "Readable video covers and short animated preview loops"

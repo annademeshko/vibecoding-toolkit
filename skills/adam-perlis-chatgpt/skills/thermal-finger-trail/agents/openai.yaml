@@ -1,0 +1,3 @@
+interface:
+  display_name: "Thermal Finger Trail"
+  short_description: "Reactive heat/paint shader for pointer and touch"
