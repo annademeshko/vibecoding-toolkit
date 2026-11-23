@@ -70,6 +70,7 @@ Source-derived **silver/graphite chrome rim** with three narrow rainbow spectral
 
 - [Full skill and implementation guide](skills/liquid-metal-border/README.md)
 - [Ready-to-copy CSS](skills/liquid-metal-border/src/liquid-metal-border.css)
+- **[Live demo — try it in the browser](https://annademeshko.com/vibecoding-toolkit/liquid-metal-border/)** (public GitHub Pages, no login)
 - [Interactive UI demo](skills/liquid-metal-border/demo/index.html) · [Preview](skills/liquid-metal-border/assets/preview.svg)
 - [Reusable AI prompt](skills/liquid-metal-border/prompts/implement-liquid-metal-border.md)
 - [Private ChatGPT plugin](https://chatgpt.com/plugins/plugins_6b046c0da82081918f1ed6655d60d261)
