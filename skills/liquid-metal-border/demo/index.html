@@ -73,7 +73,7 @@ body[data-frozen=true] .liquid-metal-border{animation:none!important}
 <footer><span>Anna Demeshko / Vibecoding Toolkit</span><a href="https://github.com/annademeshko/annademeshko.github.io">Original portfolio source ↗</a></footer>
 </main>
 <script>
-for(const b of document.querySelectorAll('[data-theme]'))b.addEventListener('click',()=>{
+for(const b of document.querySelectorAll('button[data-theme]'))b.addEventListener('click',()=>{
   document.body.dataset.theme=b.dataset.theme;
   for(const other of document.querySelectorAll('button[data-theme]'))other.setAttribute('aria-pressed',String(other===b));
 });
