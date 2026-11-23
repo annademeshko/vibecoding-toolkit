@@ -2,9 +2,7 @@
 
 **A reusable CSS/UI skill extracted from Anna Demeshko's actual portfolio.** Not a generic gradient BorderBeam.
 
-![Static schematic preview of liquid metal border UI](assets/preview.svg)
-
-**[Try the interactive demo](demo/index.html)** locally to see the real animation. The SVG is a schematic preview of the updated button + editorial card, **not a browser screenshot**. The interactive demo is the reference for actual visual behavior and animation. A PNG version of this schematic is also included in the downloadable package.
+**[Open the interactive demo](demo/index.html)** locally to see the real animation. The intentionally restrained, editorial page shows only two examples: one **Liquid Metal** button and one image card with a hover/focus border, each available in Dark, Light and Pink themes. No decorative glows or fake components. Older static previews in `assets/` are illustrative and are **not** up-to-date browser screenshots; use the HTML demo as the visual source of truth.
 
 ## The look
 
