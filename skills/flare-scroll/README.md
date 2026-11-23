@@ -18,6 +18,10 @@ Flare Scroll is a dependency-free WebGL effect inspired by a screen-recorded mot
 - **Two organic waves.** Central crest and inverted V contour with configurable amplitude, width and timing.
 - **Portable.** One JavaScript file, no build step, no frameworks, Canvas 2D fallback for unavailable WebGL.
 
+### Demo typography
+
+The playground uses **DM Sans** for UI and **Instrument Serif Italic** for editorial headline accents. Fonts are requested from Google Fonts for the demo only; system sans/serif fallbacks keep the standalone animation usable offline. The renderer itself remains font-agnostic and dependency-free.
+
 ## Preview locally
 
 Open [`flare-scroll-standalone.html`](flare-scroll-standalone.html) directly in a browser. The standalone file contains everything, including the renderer.
