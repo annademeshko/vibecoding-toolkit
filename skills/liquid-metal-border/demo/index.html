@@ -1,153 +1,129 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#111316">
-<title>Liquid Metal Border — Interaction Study</title>
-<meta name="description" content="An interactive study of Anna Demeshko’s silver-and-graphite Liquid Metal Border, shown on a button and an editorial card in three themes.">
-<link rel="stylesheet" href="../src/liquid-metal-border.css">
-<style>
-  :root { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-synthesis: none; }
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { --bg:#111316; --fg:#f5f5f3; --muted:#90959c; --panel:#1b1d22; --panel2:#22252a; --stroke:rgba(255,255,255,.15); --stage:#17191d; --stage-glow:rgba(159,180,215,.08); --soft:rgba(255,255,255,.045); --chip:rgba(255,255,255,.075); --button:#21242a; --black:#0e1013; margin:0; min-height:100vh; background:var(--bg); color:var(--fg); transition:background-color .3s,color .3s; }
-  body[data-theme="light"] { --bg:#f0f0ed; --fg:#22252a; --muted:#737981; --panel:#fff; --panel2:#f5f5f3; --stroke:rgba(22,28,35,.15); --stage:#e6e7e5; --stage-glow:rgba(255,255,255,.65); --soft:rgba(33,42,50,.04); --chip:rgba(20,28,37,.055); --button:#f9f9f8; --black:#161a20; }
-  body[data-theme="pink"] { --bg:#e73d8c; --fg:#231019; --muted:#65314a; --panel:#f8cae0; --panel2:#f5bad6; --stroke:rgba(55,17,40,.22); --stage:#df3280; --stage-glow:rgba(255,220,240,.23); --soft:rgba(255,255,255,.15); --chip:rgba(255,255,255,.22); --button:#f5b8d5; --black:#2c1123; }
-  button, a { -webkit-tap-highlight-color: transparent; }
-  button { font:inherit; cursor:pointer; }
-  a { color:inherit; }
-  button:focus-visible, a:focus-visible { outline:2px solid var(--fg); outline-offset:4px; }
-  .container { width:min(100% - 80px, 1320px); margin-inline:auto; }
-  .topbar { display:flex; justify-content:space-between; align-items:center; gap:20px; min-height:90px; border-bottom:1px solid var(--stroke); }
-  .brand { display:inline-flex; align-items:center; gap:11px; text-transform:uppercase; font-size:12px; font-weight:650; letter-spacing:.06em; text-decoration:none; }
-  .brand-mark { display:grid;place-items:center;width:37px;height:37px;border:1px solid var(--stroke);border-radius:11px;font-size:13px;letter-spacing:-.05em; }
-  .top-meta { display:flex; gap:28px; align-items:center; color:var(--muted); font-size:12px; letter-spacing:.015em; }
-  .status { display:inline-flex;align-items:center;gap:8px; }
-  .status::before { content:"";width:6px;height:6px;border-radius:50%;background:#b6d2ad;box-shadow:0 0 0 3px rgba(182,210,173,.13); }
-  .hero { display:grid;grid-template-columns:minmax(0,1.28fr) minmax(250px,.72fr);align-items:end;gap:28px;padding:80px 0 65px; }
-  .eyebrow { display:flex;align-items:center;gap:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:650; }
-  .eyebrow .rule { height:1px;width:28px;background:currentColor;opacity:.6; }
-  h1 { font-weight:500; font-size:clamp(65px,8.4vw,124px); letter-spacing:-.083em; line-height:.94; margin:22px 0 0; }
-  h1 .quiet { color:var(--muted); }
-  .hero-aside { padding-bottom:7px; margin-left:auto; max-width:290px; }
-  .hero-aside p { font-size:15px;line-height:1.7;color:var(--muted);margin:0 0 27px; }
-  .hero-aside .readout { font-size:11px;display:flex;justify-content:space-between;gap:16px;padding-top:15px;border-top:1px solid var(--stroke);letter-spacing:.08em;text-transform:uppercase; }
-  .readout span:last-child { color:var(--muted); }
-  .workbench { border-top:1px solid var(--stroke); }
-  .workbench-header { display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 0 24px; }
-  .section-label { font-size:12px;font-weight:650;letter-spacing:.04em; }
-  .switches { display:flex;align-items:center;gap:24px;flex-wrap:wrap; }
-  .switch-group { display:flex;align-items:center;gap:11px; }
-  .switch-title { text-transform:uppercase;color:var(--muted);font-size:10px;letter-spacing:.12em;font-weight:700; }
-  .segment { display:flex;gap:3px;padding:4px;border:1px solid var(--stroke);border-radius:999px;background:var(--soft); }
-  .segment button { min-height:30px;min-width:52px;padding:7px 12px;border:0;border-radius:999px;color:var(--muted);background:transparent;font-size:11px;font-weight:600;line-height:1; }
-  .segment button[aria-pressed="true"] { background:var(--fg);color:var(--bg);box-shadow:0 1px 4px rgba(0,0,0,.08); }
-  .demo-grid { display:grid;grid-template-columns:1fr 1fr;gap:17px; }
-  .study { min-width:0;position:relative;min-height:490px;display:flex;flex-direction:column;border:1px solid var(--stroke);border-radius:20px;overflow:hidden;background:var(--stage); }
-  .study-head { display:flex;justify-content:space-between;align-items:center;gap:12px;padding:24px 27px 0;position:relative;z-index:1; }
-  .study-heading { font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase; }
-  .study-index { color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums; }
-  .study-stage { position:relative;display:grid;place-items:center;min-height:352px;flex:1;padding:28px; }
-  .button-stage { background:radial-gradient(ellipse at 50% 51%,var(--stage-glow) 0,transparent 61%); }
-  .button-stage::before { content:""; position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(var(--stroke) .6px, transparent .7px);background-size:19px 19px;opacity:.3;mask-image:radial-gradient(ellipse at center,black,transparent 72%); }
-  .orbit-guide { width:440px;max-width:100%;aspect-ratio:1;max-height:350px;position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);border-radius:50%;border:1px solid var(--stroke);opacity:.33;pointer-events:none; }
-  .orbit-guide::after { content:"";position:absolute;inset:45px;border-radius:50%;border:1px dashed var(--stroke); }
-  .demo-button { --lmb-radius:19px;position:relative;z-index:1;min-width:243px;min-height:78px;display:grid;place-items:center;padding:22px 34px;border-radius:19px;background:var(--button);color:var(--fg);font-size:19px;font-weight:560;letter-spacing:-.045em;box-shadow:0 16px 55px rgba(0,0,0,.17),inset 0 1px 0 rgba(255,255,255,.04); }
-  body[data-theme="light"] .demo-button { box-shadow:0 18px 48px rgba(34,42,51,.11),inset 0 1px 0 rgba(255,255,255,.85); }
-  body[data-theme="pink"] .demo-button { box-shadow:0 18px 48px rgba(95,18,57,.19),inset 0 1px 0 rgba(255,255,255,.35); }
-  .study-foot { display:flex;justify-content:space-between;gap:14px;align-items:center;min-height:73px;padding:0 27px;border-top:1px solid var(--stroke);background:var(--soft); }
-  .foot-primary { font-size:13px;font-weight:550; }
-  .foot-secondary { font-size:11px;color:var(--muted);text-align:right; }
-  .card-stage { padding:28px 38px 32px; }
-  .photo-card { --lmb-radius:17px; display:flex; flex-direction:column;width:min(100%,400px);min-height:324px;border-radius:17px;overflow:hidden;background:var(--panel);text-decoration:none;box-shadow:0 20px 45px rgba(0,0,0,.15);transition:box-shadow .3s ease; }
-  .photo-card.liquid-metal-border--hover { border-color:var(--stroke); }
-  .photo-card:is(:hover,:focus-visible) { box-shadow:0 30px 55px rgba(0,0,0,.21); }
-  .photo { position:relative;height:207px;overflow:hidden;background:radial-gradient(circle at 74% 10%,#b7b9bf,transparent 40%),linear-gradient(142deg,#171a21,#41464e); }
-  .photo img { display:block;width:100%;height:100%;object-fit:cover;object-position:58% 45%;filter:grayscale(100%) contrast(1.08); }
-  .photo-shade { position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.18),transparent 38%,rgba(0,0,0,.2)); }
-  .photo-top { position:absolute;top:17px;left:18px;right:18px;display:flex;justify-content:space-between;align-items:center;gap:16px;color:#fff;font-size:10px;font-weight:650;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.25); }
-  .photo-top span:last-child { border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:7px 10px;background:rgba(20,20,20,.24);backdrop-filter:blur(6px); }
-  .photo-bottom { position:absolute;bottom:15px;left:18px;color:white;font-size:37px;letter-spacing:-.065em;line-height:1.02;font-weight:520;text-shadow:0 2px 12px rgba(0,0,0,.35); }
-  .card-desc { display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:116px;padding:20px 20px 21px; }
-  .card-desc h3 { margin:0 0 7px;font-size:17px;letter-spacing:-.04em;font-weight:600; }
-  .card-desc p { margin:0;color:var(--muted);font-size:12px;line-height:1.6; }
-  .card-arrow { align-self:start;flex:none;width:36px;height:36px;border:1px solid var(--stroke);border-radius:50%;display:grid;place-items:center;font-size:17px; }
-  .technical { display:grid;grid-template-columns:repeat(4,1fr);margin:30px 0 0;border-top:1px solid var(--stroke);border-bottom:1px solid var(--stroke); }
-  .tech-item { padding:25px 12px 26px 0; }
-  .tech-item + .tech-item { border-left:1px solid var(--stroke);padding-left:27px; }
-  .tech-value { display:block;font-size:28px;font-weight:540;letter-spacing:-.065em;line-height:1.1; }
-  .tech-label { display:block;font-size:11px;color:var(--muted);margin-top:9px; }
-  .footer { display:flex;justify-content:space-between;gap:20px;align-items:center;padding:29px 0 55px;color:var(--muted);font-size:11px; }
-  .footer a { text-decoration:none;border-bottom:1px solid var(--stroke);padding-bottom:3px; }
-  body[data-freeze="true"] .liquid-metal-border { animation:none!important; }
-  body[data-freeze="true"] .photo img,body[data-freeze="true"] .photo-card { transition:none!important; }
-  @media(max-width:1000px) { .container { width:min(100% - 44px,1320px); } .hero {padding:65px 0 54px;} .demo-grid { grid-template-columns:1fr 1fr; } .study{min-height:468px;} .card-stage {padding:25px 18px;} }
-  @media(max-width:740px) { .topbar{min-height:76px;} .top-meta span:last-child{display:none;} .hero{grid-template-columns:1fr;padding:57px 0 40px;gap:28px;} .hero-aside{max-width:400px;margin:0;} .hero-aside p{margin-bottom:18px;} h1{font-size:clamp(59px,11.2vw,84px);} .workbench-header{align-items:flex-start;flex-direction:column;} .demo-grid{grid-template-columns:1fr;} .study{min-height:435px;} .study-stage{min-height:320px;} .photo{height:215px;} .technical{grid-template-columns:repeat(2,1fr);} .tech-item:nth-child(3){border-left:none;padding-left:0;border-top:1px solid var(--stroke);} .tech-item:nth-child(4){border-top:1px solid var(--stroke);} }
-  @media(max-width:430px) { .container{width:calc(100% - 30px);} .brand{font-size:10px;}.brand-mark{width:31px;height:31px;}.hero{padding-top:46px;}h1{font-size:58px;}.switches{gap:13px;}.switch-group{gap:7px;}.segment button{padding:7px 9px;min-width:42px;}.study-head{padding:20px 18px 0;}.study-stage{padding:18px;}.study-foot{padding:0 18px;min-height:72px;}.card-stage{padding:18px;}.photo{height:196px;}.technical{margin-top:20px;}.tech-item+.tech-item{padding-left:15px;}.footer{align-items:flex-start;flex-direction:column;gap:8px;} }
-  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}body,.photo-card,.photo img{transition:none!important;}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#121212">
+  <meta name="description" content="A minimal interactive showcase of Anna Demeshko's Liquid Metal Border component, shown in three themes.">
+  <title>Liquid Metal Border — Component Study</title>
+  <link rel="stylesheet" href="../src/liquid-metal-border.css">
+  <style>
+    :root{font-family:Arial,Helvetica,-apple-system,BlinkMacSystemFont,sans-serif;font-synthesis:none}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{--canvas:#121212;--text:#f3f3f0;--muted:#939392;--rule:#353535;--control:#202020;--surface:#1d1d1d;--hover-bg:#262626;--photo-bg:#333;--focus:#f3f3f0;min-height:100vh;margin:0;background:var(--canvas);color:var(--text);transition:background .2s,color .2s}
+    body[data-theme="light"]{--canvas:#f5f5f2;--text:#1f1f1e;--muted:#73736f;--rule:#d6d6d1;--control:#fff;--surface:#fff;--hover-bg:#eeefeb;--photo-bg:#ccc;--focus:#1f1f1e}
+    body[data-theme="pink"]{--canvas:#f4e5eb;--text:#35252f;--muted:#856e7c;--rule:#dcc8d3;--control:#fbf2f6;--surface:#fdf7fa;--hover-bg:#f1d7e3;--photo-bg:#c99ead;--focus:#35252f}
+    button{font:inherit;color:inherit;cursor:pointer}
+    a{color:inherit}
+    :is(button,a):focus-visible{outline:2px solid var(--focus);outline-offset:5px}
+    .page{width:min(100% - 96px,1116px);margin:auto}
+    .topbar{min-height:90px;display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--rule)}
+    .identity{display:flex;align-items:center;gap:13px;color:var(--text);text-decoration:none;font-weight:600;font-size:13px;letter-spacing:-.02em}
+    .identity-mark{display:grid;place-items:center;width:31px;height:31px;border:1px solid var(--rule);border-radius:50%;font-size:11px;letter-spacing:-.04em}
+    .top-note{color:var(--muted);font-size:12px}
+    .intro{display:grid;grid-template-columns:minmax(0,1fr) 300px;align-items:end;gap:36px;padding:86px 0 66px}
+    .eyebrow{font-size:11px;color:var(--muted);letter-spacing:.09em;text-transform:uppercase}
+    h1{margin:21px 0 0;font-size:clamp(54px,7vw,88px);font-weight:500;letter-spacing:-.075em;line-height:1.02}
+    .intro-copy{margin:0 0 5px;color:var(--muted);font-size:15px;line-height:1.65;max-width:290px}
+    .tools{min-height:71px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .tools-title{font-size:12px;font-weight:600;letter-spacing:-.01em}
+    .settings{display:flex;align-items:center;gap:36px;flex-wrap:wrap}
+    .settings-group{display:flex;align-items:center;gap:13px}
+    .settings-name{font-size:11px;color:var(--muted)}
+    .options{display:flex;gap:16px;align-items:center}
+    .options button{border:0;background:none;padding:11px 0;font-size:12px;color:var(--muted);border-bottom:1px solid transparent;line-height:1.25}
+    .options button[aria-pressed="true"]{color:var(--text);border-bottom-color:var(--text)}
+    .examples{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule)}
+    .example{min-width:0;display:flex;flex-direction:column;min-height:460px;padding:32px 40px 27px 0}
+    .example+.example{border-left:1px solid var(--rule);padding:32px 0 27px 40px}
+    .example-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+    .example-heading h2{font-size:13px;font-weight:600;letter-spacing:-.015em;margin:0}
+    .example-heading span{font-size:11px;color:var(--muted)}
+    .example-stage{flex:1;display:grid;place-items:center;padding:34px 8px;min-height:335px}
+    .metal-button{--lmb-radius:16px;min-width:235px;min-height:72px;padding:0 30px;border-radius:16px;background:var(--control);font-size:17px;font-weight:540;letter-spacing:-.035em;color:var(--text);box-shadow:0 10px 30px rgba(0,0,0,.075)}
+    .metal-button:active{transform:translateY(1px)}
+    .photo-card{--lmb-radius:13px;width:min(100%,342px);background:var(--surface);text-decoration:none;display:block;overflow:hidden;border-radius:13px;transition:background .2s}
+    .photo-card.liquid-metal-border--hover{border-color:var(--rule)}
+    .photo-frame{height:190px;background:var(--photo-bg);overflow:hidden}
+    .photo-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 46%;filter:grayscale(1) contrast(1.05);transition:transform .45s ease}
+    .photo-card:hover img,.photo-card:focus-visible img{transform:scale(1.035)}
+    .photo-info{min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:19px 20px}
+    .photo-info h3{font-size:15px;font-weight:550;letter-spacing:-.035em;margin:0 0 5px}
+    .photo-info p{font-size:12px;color:var(--muted);margin:0}
+    .photo-arrow{font-size:17px;color:var(--muted);align-self:center}
+    .example-note{border-top:1px solid var(--rule);padding-top:18px;display:flex;justify-content:space-between;gap:16px;font-size:11px;color:var(--muted)}
+    .example-note strong{font-weight:500;color:var(--text)}
+    .spec{display:flex;gap:35px;flex-wrap:wrap;padding:24px 0;border-bottom:1px solid var(--rule);color:var(--muted);font-size:11px}
+    .spec b{font-weight:600;color:var(--text);margin-right:5px}
+    .footer{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:28px 0 52px;color:var(--muted);font-size:11px}
+    .footer a{text-underline-offset:3px;text-decoration-thickness:1px}
+    body[data-freeze="true"] .liquid-metal-border{animation:none!important}
+    body[data-freeze="true"] .photo-frame img{transition:none!important}
+    @media(max-width:900px){.page{width:min(100% - 48px,1116px)}.intro{padding:65px 0 49px}.example{padding-right:22px}.example+.example{padding-left:22px}.settings{gap:18px}}
+    @media(max-width:680px){.page{width:calc(100% - 38px)}.topbar{min-height:74px}.top-note{font-size:10px}.intro{grid-template-columns:1fr;padding:60px 0 45px;gap:22px}.intro-copy{max-width:420px}.tools{padding:16px 0;align-items:flex-start}.settings{width:100%;justify-content:space-between}.examples{grid-template-columns:1fr}.example{min-height:405px;padding:28px 0 24px}.example+.example{border-left:none;border-top:1px solid var(--rule);padding:28px 0 24px}.example-stage{min-height:300px;padding:24px 10px}.photo-frame{height:205px}.spec{gap:14px 25px}.footer{align-items:flex-start;flex-direction:column;gap:9px}}
+    @media(max-width:390px){h1{font-size:51px}.settings-group{gap:9px}.options{gap:10px}.metal-button{min-width:220px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body,.photo-card,.photo-frame img{transition:none!important}}
+  </style>
 </head>
 <body data-theme="dark" data-freeze="false">
-<div class="container">
-  <header class="topbar">
-    <a class="brand" href="https://github.com/annademeshko/vibecoding-toolkit" target="_blank" rel="noopener noreferrer"><span class="brand-mark" aria-hidden="true">AD</span>Vibecoding Toolkit <span aria-hidden="true">/</span> 001</a>
-    <div class="top-meta"><span class="status">Interactive study</span><span>CSS only · v1.1</span></div>
-  </header>
-  <main>
-    <section class="hero" aria-labelledby="page-title">
-      <div><div class="eyebrow"><span class="rule" aria-hidden="true"></span> Interface materials / 001</div><h1 id="page-title">Liquid Metal<br><span class="quiet">Border.</span></h1></div>
-      <div class="hero-aside"><p>A fine chrome edge with subtle prismatic reflections. The component stays still. Only the light travels.</p><div class="readout"><span>Original effect</span><span>Anna Demeshko © 2026</span></div></div>
-    </section>
-    <section class="workbench" aria-label="Interactive effect examples">
-      <div class="workbench-header"><div class="section-label">Live playground <span aria-hidden="true">↘</span></div>
-        <div class="switches">
-          <div class="switch-group"><span class="switch-title">Theme</span><div class="segment" role="group" aria-label="Page theme"><button data-theme-button="dark" type="button" aria-pressed="true">Dark</button><button data-theme-button="light" type="button" aria-pressed="false">Light</button><button data-theme-button="pink" type="button" aria-pressed="false">Pink</button></div></div>
-          <div class="switch-group"><span class="switch-title">Motion</span><div class="segment" role="group" aria-label="Effect motion"><button data-motion="play" type="button" aria-pressed="true">On</button><button data-motion="pause" type="button" aria-pressed="false">Off</button></div></div>
-        </div>
-      </div>
-      <div class="demo-grid">
-        <article class="study">
-          <div class="study-head"><div class="study-heading">Always on</div><span class="study-index">01 / BUTTON</span></div>
-          <div class="study-stage button-stage"><div class="orbit-guide" aria-hidden="true"></div><button type="button" class="liquid-metal-border demo-button">Liquid Metal</button></div>
-          <div class="study-foot"><span class="foot-primary">Permanent chrome edge</span><span class="foot-secondary">16-second continuous orbit</span></div>
-        </article>
-        <article class="study">
-          <div class="study-head"><div class="study-heading">On interaction</div><span class="study-index">02 / HOVER CARD</span></div>
-          <div class="study-stage card-stage">
-            <a class="liquid-metal-border liquid-metal-border--hover photo-card" href="https://unsplash.com/photos/modern-white-building-with-curved-walls-and-windows-PS1pwUMfCN0" target="_blank" rel="noopener noreferrer" aria-label="Explore Form Study photography by Unsplash; hover or focus to reveal the chrome border">
-              <div class="photo"><img src="https://images.unsplash.com/photo-1727496842835-5a33ba0fd4b4?auto=format&amp;fit=crop&amp;w=1100&amp;q=82" alt="Sculptural white curved architecture against a black sky" loading="eager" referrerpolicy="no-referrer" onerror="this.style.display='none'"><span class="photo-shade" aria-hidden="true"></span><div class="photo-top"><span>Material exploration</span><span>01 / 03</span></div><div class="photo-bottom">Form<br>Study.</div></div>
-              <div class="card-desc"><div><h3>Where form meets light</h3><p>Editorial card / Hover to reveal the border</p></div><span class="card-arrow" aria-hidden="true">↗</span></div>
-            </a>
+  <div class="page">
+    <header class="topbar">
+      <a class="identity" href="https://github.com/annademeshko/vibecoding-toolkit" target="_blank" rel="noopener noreferrer"><span class="identity-mark" aria-hidden="true">AD</span>Components</a>
+      <span class="top-note">Anna Demeshko — 001</span>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div><div class="eyebrow">Interface experiments / 001</div><h1 id="page-title">Liquid Metal.</h1></div>
+        <p class="intro-copy">A fine chrome border with restrained prismatic reflections. Two states, one material.</p>
+      </section>
+      <section aria-label="Interactive component examples">
+        <div class="tools">
+          <span class="tools-title">Preview</span>
+          <div class="settings">
+            <div class="settings-group"><span class="settings-name">Theme</span><div class="options" role="group" aria-label="Choose theme"><button type="button" data-theme-button="dark" aria-pressed="true">Dark</button><button type="button" data-theme-button="light" aria-pressed="false">Light</button><button type="button" data-theme-button="pink" aria-pressed="false">Pink</button></div></div>
+            <div class="settings-group"><span class="settings-name">Motion</span><div class="options" role="group" aria-label="Toggle border animation"><button type="button" data-motion="play" aria-pressed="true">On</button><button type="button" data-motion="pause" aria-pressed="false">Off</button></div></div>
           </div>
-          <div class="study-foot"><span class="foot-primary">Reactive chrome edge</span><span class="foot-secondary">Hover or keyboard focus</span></div>
-        </article>
-      </div>
-    </section>
-    <section class="technical" aria-label="Effect properties">
-      <div class="tech-item"><span class="tech-value">1.5<span style="font-size:.48em;letter-spacing:0"> px</span></span><span class="tech-label">Chrome border</span></div>
-      <div class="tech-item"><span class="tech-value">16<span style="font-size:.48em;letter-spacing:0"> sec</span></span><span class="tech-label">Orbital duration</span></div>
-      <div class="tech-item"><span class="tech-value">03</span><span class="tech-label">Spectral reflections</span></div>
-      <div class="tech-item"><span class="tech-value">0</span><span class="tech-label">JavaScript dependencies for border</span></div>
-    </section>
-  </main>
-  <footer class="footer"><span>Built from the original Anna Demeshko portfolio border.</span><span>Photo by <a href="https://unsplash.com/photos/modern-white-building-with-curved-walls-and-windows-PS1pwUMfCN0" target="_blank" rel="noopener noreferrer">Fer Troulik / Unsplash</a> · <a href="https://github.com/annademeshko/vibecoding-toolkit/tree/main/skills/liquid-metal-border" target="_blank" rel="noopener noreferrer">Source on GitHub</a></span></footer>
-</div>
-<script>
-  for (const button of document.querySelectorAll('[data-theme-button]')) {
-    button.addEventListener('click', () => {
-      document.body.dataset.theme = button.dataset.themeButton;
-      document.querySelector('meta[name="theme-color"]').content = button.dataset.themeButton === 'dark' ? '#111316' : button.dataset.themeButton === 'pink' ? '#e73d8c' : '#f0f0ed';
-      for (const el of document.querySelectorAll('[data-theme-button]')) el.setAttribute('aria-pressed', String(el === button));
-    });
-  }
-  for (const button of document.querySelectorAll('[data-motion]')) {
-    button.addEventListener('click', () => {
-      document.body.dataset.freeze = String(button.dataset.motion === 'pause');
-      for (const el of document.querySelectorAll('[data-motion]')) el.setAttribute('aria-pressed', String(el === button));
-    });
-  }
-</script>
+        </div>
+        <div class="examples">
+          <article class="example" aria-labelledby="first-title">
+            <div class="example-heading"><h2 id="first-title">Continuous</h2><span>01 / Button</span></div>
+            <div class="example-stage"><button class="liquid-metal-border metal-button" type="button">Liquid Metal</button></div>
+            <div class="example-note"><strong>Always on</strong><span>16-second orbit</span></div>
+          </article>
+          <article class="example" aria-labelledby="second-title">
+            <div class="example-heading"><h2 id="second-title">Interactive</h2><span>02 / Card</span></div>
+            <div class="example-stage">
+              <a class="liquid-metal-border liquid-metal-border--hover photo-card" href="https://unsplash.com/photos/modern-white-building-with-curved-walls-and-windows-PS1pwUMfCN0" target="_blank" rel="noopener noreferrer" aria-label="Open photograph; hover or focus to reveal the metal border">
+                <div class="photo-frame"><img src="https://images.unsplash.com/photo-1727496842835-5a33ba0fd4b4?auto=format&amp;fit=crop&amp;w=1100&amp;q=82" alt="Sculptural curved white architecture" loading="eager" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div>
+                <div class="photo-info"><div><h3>Form &amp; light</h3><p>Editorial photo study</p></div><span class="photo-arrow" aria-hidden="true">↗</span></div>
+              </a>
+            </div>
+            <div class="example-note"><strong>Hover or focus</strong><span>Border appears on interaction</span></div>
+          </article>
+        </div>
+        <div class="spec" aria-label="Component properties"><span><b>1.5px</b> border</span><span><b>16s</b> rotation</span><span><b>CSS</b> only for effect</span><span><b>3</b> spectral highlights</span></div>
+      </section>
+    </main>
+    <footer class="footer"><span>Liquid Metal Border · Original portfolio material</span><span>Photo: <a href="https://unsplash.com/photos/modern-white-building-with-curved-walls-and-windows-PS1pwUMfCN0" target="_blank" rel="noopener noreferrer">Fer Troulik / Unsplash</a> &nbsp;·&nbsp; <a href="https://github.com/annademeshko/vibecoding-toolkit/tree/main/skills/liquid-metal-border" target="_blank" rel="noopener noreferrer">Source</a></span></footer>
+  </div>
+  <script>
+    const themeColors = {dark:'#121212',light:'#f5f5f2',pink:'#f4e5eb'};
+    for(const button of document.querySelectorAll('[data-theme-button]')){
+      button.addEventListener('click',()=>{
+        const theme=button.dataset.themeButton;
+        document.body.dataset.theme=theme;
+        document.querySelector('meta[name="theme-color"]').content=themeColors[theme];
+        for(const other of document.querySelectorAll('[data-theme-button]'))other.setAttribute('aria-pressed',String(other===button));
+      });
+    }
+    for(const button of document.querySelectorAll('[data-motion]')){
+      button.addEventListener('click',()=>{
+        document.body.dataset.freeze=String(button.dataset.motion==='pause');
+        for(const other of document.querySelectorAll('[data-motion]'))other.setAttribute('aria-pressed',String(other===button));
+      });
+    }
+  </script>
 </body>
 </html>
