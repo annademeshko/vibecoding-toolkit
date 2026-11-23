@@ -6,25 +6,28 @@
   <meta name="theme-color" content="#e9e9e6">
   <meta name="description" content="Flare Scroll — a customizable, scroll-driven light wave. Explore palettes, adjust the crest, and copy the configuration.">
   <title>Flare Scroll — Interactive Motion Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
-    :root{font-family:Arial,Helvetica,sans-serif;color:#171717;background:#e9e9e6;font-synthesis:none;-webkit-font-smoothing:antialiased}
+    :root{font-family:"DM Sans",Arial,Helvetica,sans-serif;color:#171717;background:#e9e9e6;font-synthesis:none;-webkit-font-smoothing:antialiased}
     *{box-sizing:border-box}html{scroll-behavior:auto}body{margin:0;overflow-x:hidden}button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
     :focus-visible{outline:2px solid #4067cc;outline-offset:4px}
     .topbar{height:78px;padding:0 clamp(20px,3vw,50px);display:flex;align-items:center;justify-content:space-between;gap:24px;border-bottom:1px solid #cececa}
     .identity{display:flex;align-items:center;gap:15px;font-weight:750;font-size:14px;letter-spacing:-.05em}.mark{width:27px;height:27px;border-radius:50%;border:5px solid #1c1c1b;display:block;position:relative}.mark:after{content:"";position:absolute;width:4px;height:4px;background:#1c1c1b;top:50%;left:50%;border-radius:50%;transform:translate(-50%,-50%)}
     .topbar-note{font-size:12px;color:#666762}.topbar-right{display:flex;align-items:center;gap:21px}.topbar-right a{font-size:12px;border-bottom:1px solid currentColor;padding-bottom:2px}
     .intro{padding:42px clamp(20px,3vw,50px) 26px;display:flex;align-items:end;justify-content:space-between;gap:24px}
-    .intro h1{font-size:clamp(38px,5vw,78px);line-height:.98;font-weight:500;letter-spacing:-.075em;margin:0}.intro .descriptor{max-width:230px;font-size:13px;color:#62645f;line-height:1.55;margin-bottom:3px}
+    .intro h1{font-size:clamp(42px,5.3vw,84px);line-height:.99;font-weight:500;letter-spacing:-.075em;margin:0}.intro .descriptor{max-width:230px;font-size:13px;color:#62645f;line-height:1.55;margin-bottom:3px}
     .overline{color:#62645f;font-size:10px;text-transform:uppercase;letter-spacing:.16em;font-weight:700;margin-bottom:14px}
     .demo-track{height:490svh;position:relative;padding:0 14px}.demo-shell{height:calc(100svh - 29px);position:sticky;top:14px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:12px}
     .scene{min-width:0;position:relative;overflow:hidden;isolation:isolate;border-radius:13px;background:#000;box-shadow:0 0 0 1px rgba(0,0,0,.1)}
     .scene canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-    .scene-head{position:absolute;inset:0 0 auto;z-index:4;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:32px 36px;color:var(--ink,#fff)}
-    .scene-brand{font-size:13px;letter-spacing:-.04em;font-weight:700}.scene-nav{display:flex;gap:23px;font-size:11px}.scene-nav a{opacity:.65}.scene-nav a:hover{opacity:1}
     .scene-copy{position:absolute;z-index:2;top:50%;left:50%;width:min(90%,720px);text-align:center;transform:translate3d(-50%,-50%,0);opacity:0;pointer-events:none;will-change:opacity,transform,filter}
     .scene-copy.light{color:#fff}.scene-copy.dark{color:#0a0a0a}.scene-eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.18em;font-weight:700;margin:0 0 18px}
-    .scene-copy h2{font-size:clamp(36px,4.5vw,78px);line-height:1.03;letter-spacing:-.071em;font-weight:500;margin:0}.scene-copy p:last-child{font-size:clamp(12px,1.1vw,15px);opacity:.72;letter-spacing:-.012em;line-height:1.55;margin:16px auto 0}
-    .scene-footer{position:absolute;z-index:4;bottom:30px;left:35px;right:35px;display:flex;justify-content:space-between;color:var(--ink,#fff);gap:20px;font-size:10px;text-transform:uppercase;letter-spacing:.13em}.scene-footer span:last-child{opacity:.67}
+    .scene-copy h2{font-size:clamp(40px,5.1vw,88px);line-height:1.025;letter-spacing:-.073em;font-weight:500;margin:0}.scene-copy p:last-child{font-size:clamp(12px,1.1vw,15px);opacity:.75;letter-spacing:-.012em;line-height:1.6;margin:22px auto 0;max-width:350px}
+    .scene-footer{position:absolute;z-index:4;bottom:30px;left:35px;right:35px;display:flex;justify-content:flex-end;color:var(--ink,#fff);gap:20px;font-size:10px;text-transform:uppercase;letter-spacing:.13em}.scene-footer span{opacity:.65}
+    .intro h1 em,.scene-copy h2 em,.docs h2 em{font-family:"Instrument Serif", "Iowan Old Style", "Baskerville", Georgia,serif;font-weight:400;font-style:italic;letter-spacing:-.04em}
+    .intro h1 em{font-size:1.07em}.scene-copy h2 em{font-size:1.13em}
     .panel{background:#f7f7f5;border:1px solid #d6d6d2;border-radius:13px;display:flex;flex-direction:column;overflow:hidden}
     .panel-top{padding:28px 26px 22px;border-bottom:1px solid #dfdfdb;display:flex;justify-content:space-between;align-items:start;gap:12px}
     .panel-top h2{margin:0;font-size:21px;line-height:1.15;font-weight:500;letter-spacing:-.055em}.micro{font-size:10px;color:#777875;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
@@ -39,29 +42,29 @@
     #close-panel{display:none}.panel-footnote{font-size:10px;line-height:1.5;color:#7a7b76;margin:14px 0 0}.toggle-panel{display:none}
     .track-anchor{position:absolute;left:0;height:1px;width:1px;pointer-events:none}.track-anchor.one{top:0}.track-anchor.two{top:43%}.track-anchor.three{top:84%}
     .docs{max-width:1200px;margin:0 auto;padding:130px 30px 150px}.docs-head{border-top:1px solid #bcbcb8;padding-top:25px;display:flex;justify-content:space-between;gap:30px}.docs h2{margin:0;font-size:clamp(32px,4vw,60px);line-height:1.04;letter-spacing:-.07em;font-weight:500;max-width:650px}.docs-body{display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-top:65px}.docs-body p{font-size:13px;line-height:1.75;color:#555752;max-width:420px}.docs-body h3{font-size:12px;letter-spacing:-.02em}.code-box{background:#191919;color:#e9e9e8;border-radius:10px;padding:22px;font-size:12px;overflow:auto;line-height:1.8;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre}.code-box .c{color:#90918e}.code-box .k{color:#b2c6ed}.bottom-line{border-top:1px solid #c8c8c2;padding-top:22px;margin-top:95px;display:flex;justify-content:space-between;gap:20px;font-size:11px;color:#777}
-    @media(max-width:990px){.demo-shell{grid-template-columns:minmax(0,1fr) 290px}.scene-head{padding:24px}.scene-footer{left:24px;right:24px}.intro .descriptor{max-width:190px}.panel-top,.panel-body,.panel-bottom{padding-left:18px;padding-right:18px}}
-    @media(max-width:760px){.topbar{height:64px;padding:0 18px}.topbar-note{display:none}.intro{padding:31px 18px 25px}.intro h1{font-size:clamp(40px,9vw,60px)}.intro .descriptor{display:none}.demo-track{padding:0 8px}.demo-shell{grid-template-columns:1fr;height:calc(100svh - 16px);top:8px}.scene{border-radius:11px}.scene-head{padding:22px}.scene-footer{bottom:25px;left:22px;right:22px}.scene-copy h2{font-size:clamp(36px,8.2vw,64px)}.panel{position:absolute;z-index:10;right:10px;left:10px;bottom:10px;top:auto;max-height:calc(100% - 30px);transform:translateY(calc(100% + 16px));transition:transform .24s ease;box-shadow:0 16px 50px rgba(0,0,0,.28)}.panel.open{transform:translateY(0)}.panel-body{max-height:55svh}.toggle-panel{display:block;position:absolute;z-index:9;bottom:18px;left:50%;transform:translateX(-50%);padding:0 19px;color:#191919;background:#f7f7f5;border:1px solid #bbbdb9;box-shadow:0 4px 20px rgba(0,0,0,.16)}.toggle-panel[aria-expanded=true]{visibility:hidden}#close-panel{display:block}.panel-top{padding-top:20px}.docs{padding:90px 20px}.docs-body{grid-template-columns:1fr;gap:26px;margin-top:35px}.docs-head{display:block}.docs h2{margin-top:20px}}
+    @media(max-width:990px){.demo-shell{grid-template-columns:minmax(0,1fr) 290px}.scene-footer{left:24px;right:24px}.intro .descriptor{max-width:190px}.panel-top,.panel-body,.panel-bottom{padding-left:18px;padding-right:18px}}
+    @media(max-width:760px){.topbar{height:64px;padding:0 18px}.topbar-note{display:none}.intro{padding:31px 18px 25px}.intro h1{font-size:clamp(40px,9vw,60px)}.intro .descriptor{display:none}.demo-track{padding:0 8px}.demo-shell{grid-template-columns:1fr;height:calc(100svh - 16px);top:8px}.scene{border-radius:11px}.scene-footer{bottom:25px;left:22px;right:22px}.scene-copy h2{font-size:clamp(38px,8.6vw,65px)}.panel{position:absolute;z-index:10;right:10px;left:10px;bottom:10px;top:auto;max-height:calc(100% - 30px);transform:translateY(calc(100% + 16px));transition:transform .24s ease;box-shadow:0 16px 50px rgba(0,0,0,.28)}.panel.open{transform:translateY(0)}.panel-body{max-height:55svh}.toggle-panel{display:block;position:absolute;z-index:9;bottom:18px;left:50%;transform:translateX(-50%);padding:0 19px;color:#191919;background:#f7f7f5;border:1px solid #bbbdb9;box-shadow:0 4px 20px rgba(0,0,0,.16)}.toggle-panel[aria-expanded=true]{visibility:hidden}#close-panel{display:block}.panel-top{padding-top:20px}.docs{padding:90px 20px}.docs-body{grid-template-columns:1fr;gap:26px;margin-top:35px}.docs-head{display:block}.docs h2{margin-top:20px}}
+    @media(max-width:380px){.scene-copy h2{font-size:36px}.scene-copy h2 em{font-size:1.08em}.scene-copy{width:94%}.scene-eyebrow{font-size:9px}}
     @media(prefers-reduced-motion:reduce){.panel{transition:none}.preset{transition:none}}
   </style>
 </head>
 <body>
   <header class="topbar"><div class="identity"><span class="mark" aria-hidden="true"></span><span>FLARE / SCROLL</span></div><div class="topbar-note">An open-source motion study · No dependencies</div><div class="topbar-right"><a href="#how-it-works">Documentation</a><a href="https://github.com/annademeshko/vibecoding-toolkit/tree/main/skills/flare-scroll" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></header>
-  <div class="intro"><div><div class="overline">Interactive motion playground / 001</div><h1>Light, shaped<br>by scroll.</h1></div><div class="descriptor">An organic transition between light and dark. One gesture, infinite palettes.</div></div>
+  <div class="intro"><div><div class="overline">An interactive motion study</div><h1>Scroll to shape<br><em>the light.</em></h1></div><div class="descriptor">An organic light transition, shaped by every scroll. Choose a color. Change the mood.</div></div>
   <section class="demo-track" id="track" aria-label="Scroll animation playground">
     <span class="track-anchor one" id="scene-one"></span><span class="track-anchor two" id="scene-two"></span><span class="track-anchor three" id="scene-three"></span>
     <div class="demo-shell">
       <div class="scene" id="scene"><canvas id="flare" aria-hidden="true"></canvas>
-        <div class="scene-head" id="scene-head"><div class="scene-brand">Studio North</div><nav class="scene-nav" aria-label="Demo scenes"><a href="#scene-one">01 / Work</a><a href="#scene-two">02 / Studio</a><a href="#scene-three">03 / Contact</a></nav></div>
-        <div class="scene-copy light" id="copy-1"><p class="scene-eyebrow">Selected work — 01</p><h2>Make the web<br>feel alive again.</h2><p>Interfaces with weight, rhythm and a little heat.</p></div>
-        <div class="scene-copy dark" id="copy-2"><p class="scene-eyebrow">Studio notes — 02</p><h2>For people who<br>sweat the details.</h2><p>The small things are the big things.</p></div>
-        <div class="scene-copy light" id="copy-3"><p class="scene-eyebrow">Next chapter — 03</p><h2>Good things<br>take shape.</h2><p>Feel the difference when everything flows.</p></div>
-        <div class="scene-footer" id="scene-footer"><span id="scene-index">01 / 03</span><span id="scene-status">Scroll to explore ↓</span></div>
+        <div class="scene-copy light" id="copy-1"><p class="scene-eyebrow">A study in movement</p><h2>Motion begins<br><em>with you.</em></h2><p>Scroll to wake the light.</p></div>
+        <div class="scene-copy dark" id="copy-2"><p class="scene-eyebrow">Light, in transition</p><h2>Between light<br><em>&amp; shadow.</em></h2><p>One wave, moving at your pace.</p></div>
+        <div class="scene-copy light" id="copy-3"><p class="scene-eyebrow">An open color system</p><h2>One wave.<br><em>Any color.</em></h2><p>Change the hue. Keep the flow.</p></div>
+        <div class="scene-footer" id="scene-footer"><span id="scene-status">Scroll to explore ↓</span></div>
       </div>
       <button type="button" class="toggle-panel" id="toggle-panel" aria-expanded="false" aria-controls="controls">Customize effect ↗</button>
       <aside class="panel" id="controls" aria-label="Effect settings">
         <div class="panel-top"><div><div class="micro" style="margin-bottom:11px">Live controls</div><h2>Make it yours.</h2></div><button class="secondary" id="close-panel" type="button" style="padding:0 10px;min-height:29px" aria-label="Close controls">×</button></div>
         <div class="panel-body">
-          <section class="field" aria-labelledby="palettes-label"><div class="field-title"><span id="palettes-label">Presets</span><span class="micro">06 / colors</span></div><div class="preset-grid" id="presets">
+          <section class="field" aria-labelledby="palettes-label"><div class="field-title"><span id="palettes-label">Presets</span><span class="micro">Choose a hue</span></div><div class="preset-grid" id="presets">
             <button class="preset" type="button" data-preset="blue" aria-pressed="true"><span class="swatch" style="background:#2e74e2"></span>Electric</button>
             <button class="preset" type="button" data-preset="rose" aria-pressed="false"><span class="swatch" style="background:#ed5c9c"></span>Rose</button>
             <button class="preset" type="button" data-preset="violet" aria-pressed="false"><span class="swatch" style="background:#9368f5"></span>Violet</button>
@@ -82,7 +85,7 @@
       </aside>
     </div>
   </section>
-  <section class="docs" id="how-it-works"><div class="docs-head"><span class="micro">Under the hood / 002</span><h2>Organic by design.<br>Precise in code.</h2></div>
+  <section class="docs" id="how-it-works"><div class="docs-head"><span class="micro">Behind the effect</span><h2>Shaped by scroll.<br><em>Made to feel.</em></h2></div>
     <div class="docs-body"><div><h3>What you're seeing</h3><p>A signed-distance wavefront travels vertically through two pinned scenes. The gradient follows that curve, not the screen axis. A WebGL fragment shader renders nine overlapping color stops with adjustable softness. Scroll position determines every frame, in both directions.</p><p>The initial frame is completely dark. The light appears only after the user begins scrolling. A small Canvas 2D fallback is included for browsers without WebGL.</p></div>
       <div><h3>Quick start</h3><div class="code-box"><span class="c">// One accent changes the entire flare.</span>
 <span class="k">const</span> flare = new FlareScroll(
@@ -109,7 +112,7 @@ flare.setProgress(progress);</div></div></div>
       const presets={blue:'#2E74E2',rose:'#ED5C9C',violet:'#9368F5',acid:'#A1D65B',amber:'#F5A34C',cyan:'#32C6CB'};
       const colors={dark:'#000000',accent:'#2E74E2',light:'#FFFFFF'};
       const engine=new FlareScroll($('flare'),{colors});
-      const track=$('track'),head=$('scene-head'),footer=$('scene-footer'),scenes=[$('copy-1'),$('copy-2'),$('copy-3')];
+      const track=$('track'),footer=$('scene-footer'),scenes=[$('copy-1'),$('copy-2'),$('copy-3')];
       const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n));
       const ease=(a,b,p)=>{let t=clamp((p-a)/(b-a));return t*t*(3-2*t)};
@@ -130,9 +133,8 @@ flare.setProgress(progress);</div></div></div>
         position(scenes[1],in2*(1-out2),46*(1-in2)-210*out2,18*(1-in2)+4*out2,.982+.018*in2);
         const in3=ease(.745,.838,p);position(scenes[2],in3,35*(1-in3),20*(1-in3),.98+.02*in3);
         const ink=p>=.411&&p<.792?'#151515':'#FFFFFF';
-        head.style.setProperty('--ink',ink);footer.style.setProperty('--ink',ink);
-        $('scene-index').textContent=p<.43?'01 / 03':p<.81?'02 / 03':'03 / 03';
-        $('scene-status').textContent=p<.025?'SCROLL TO EXPLORE ↓':p>=.98?'END OF TRANSITION':'SCROLL DRIVEN / '+Math.round(p*100)+'%';
+        footer.style.setProperty('--ink',ink);
+        $('scene-status').textContent=p<.025?'SCROLL TO EXPLORE ↓':p>=.98?'SCROLL UP TO REPLAY ↑':'KEEP SCROLLING ↓';
       }
       function frame(now){
         const dt=Math.min(64,now-(previous||now));previous=now;
