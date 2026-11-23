@@ -1,0 +1,20 @@
+/* Motion primitives: prefer transitions that explain UI state. */
+:root {
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-quick: 140ms;
+  --motion-medium: 200ms;
+  --motion-enter: 360ms;
+}
+
+/* Usage: add to an interactive element that has defined hover/active states. */
+.motion-feedback {
+  transition-property: background-color, border-color, color, opacity, transform;
+  transition-duration: var(--motion-quick);
+  transition-timing-function: var(--motion-ease);
+}
+.motion-feedback:active { transform: scale(0.98); }
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-feedback { transition-duration: 0.01ms; }
+  .motion-feedback:active { transform: none; }
+}

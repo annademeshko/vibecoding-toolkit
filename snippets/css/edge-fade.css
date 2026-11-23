@@ -1,0 +1,35 @@
+/* Horizontal edge-fade mask for an overflow strip.
+   Usage: <div class="edge-fade"><div class="edge-fade__track">…</div></div>
+   The track can scroll naturally or be animated separately.
+   Browser support: modern browsers with CSS mask-image support. */
+.edge-fade {
+  --edge-fade-width: clamp(24px, 5vw, 72px);
+  min-width: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--edge-fade-width),
+    #000 calc(100% - var(--edge-fade-width)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--edge-fade-width),
+    #000 calc(100% - var(--edge-fade-width)),
+    transparent 100%
+  );
+}
+
+.edge-fade__track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.edge-fade__track::-webkit-scrollbar { display: none; }
+
+@media (forced-colors: active) {
+  .edge-fade { -webkit-mask-image: none; mask-image: none; }
+}

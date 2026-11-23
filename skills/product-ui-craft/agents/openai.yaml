@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product UI Craft"
+  short_description: "Audit and polish product UI without generic AI styling"
+  default_prompt: "Use $product-ui-craft to audit or build this UI, preserving its reference and design system."
