@@ -25,3 +25,11 @@ This repository is a curated library of reusable vibecoding assets, not a produc
 - Avoid adding frameworks just to demonstrate a CSS effect.
 - Keep licensing and attribution for third-party work.
 - Describe changes in a readable commit message.
+
+## Product strategy and discovery
+
+- Use skills/next-move-theory/SKILL.md and matching nmt-* workflows for segmentation, JTBD, product decisions and PRD work.
+- Challenge the business goal and compare existing user Solutions before proposing additional features.
+- Separate verified evidence, derivations and untested hypotheses. Propose falsifiable Riskiest Assumption Tests before building.
+- For exact AJTBD methodology consult the public canon by Ivan Zamesin; do not substitute generic JTBD definitions.
+- The NMT-derived skills are CC BY-NC-SA 4.0, not MIT.

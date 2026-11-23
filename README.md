@@ -9,7 +9,8 @@
 ```text
 vibecoding-toolkit/
 ├── skills/                   # Инструкции для AI-агентов
-│   └── product-ui-craft/     # Unslop + Figma + iOS + web + motion
+│   ├── product-ui-craft/     # Unslop + Figma + iOS + web + motion
+│   └── next-move-theory/    # Advanced JTBD + product strategy
 ├── snippets/                 # Рабочий переиспользуемый код
 │   ├── css/                  # CSS-токены и визуальные эффекты
 │   ├── react/                # React/TypeScript utilities
@@ -52,6 +53,16 @@ cp -R skills/product-ui-craft .claude/skills/product-ui-craft
 
 Используйте только в поддерживаемом окружении; сам репозиторий не устанавливает скилл в ChatGPT автоматически.
 
+## Next Move Theory — Product Strategy Toolkit
+
+Отдельная система продуктовых скиллов на основе **Next Move Theory / Advanced Jobs To Be Done** Ивана Замесина. Нужна, чтобы понять **что создавать, для кого и что проверить перед разработкой**.
+
+Поддерживает продуктовую стратегию, исследования рынка и интервью, сегментацию по Jobs, ценностные предложения, PRD и go-to-market.
+
+[Все сценарии, установка и примеры](skills/next-move-theory/README.md) · [Основной скилл](skills/next-move-theory/SKILL.md) · [Приватный плагин ChatGPT](https://chatgpt.com/plugins/plugins_6b0465893afc81919b4360eaa8f52e3a)
+
+**Лицензия:** производные материалы — CC BY-NC-SA 4.0, автор Ivan Zamesin; на них не распространяется MIT-лицензия этой библиотеки. [Оригинальный репозиторий](https://github.com/zamesin/Next-Move-Theory-Canon-and-Skills).
+
 ## Как пользоваться
 
 **Для дизайн-задачи** — взять `skills/product-ui-craft/SKILL.md` и соответствующий файл из `prompts/`.
@@ -71,4 +82,4 @@ cp -R skills/product-ui-craft .claude/skills/product-ui-craft
 
 ## Лицензии
 
-Оригинальный код и документы этого репозитория — MIT (см. `LICENSE`). Материалы `skills/product-ui-craft/`, адаптированные из Unslop, распространяются на условиях **CC BY 4.0** с указанием авторства Damir Sokolovsky. См. атрибуцию внутри папки скилла.
+Оригинальный код и документы этого репозитория — MIT (см. `LICENSE`). Материалы `skills/product-ui-craft/`, адаптированные из Unslop, распространяются на условиях **CC BY 4.0** с указанием авторства Damir Sokolovsky. См. атрибуцию внутри папки скилла. Next Move Theory использует CC BY-NC-SA 4.0; см. skills/next-move-theory/ATTRIBUTION.md.
